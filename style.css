@@ -1,0 +1,348 @@
+:root {
+  --accent: #e7ce6b; /* Soft yellow */
+  --accent-dark: #fbd208; /* Deeper yellow for hover */
+  --primary: #c1b88c; /* Light yellow background */
+  --secondary: #ffffff; /* White for cards/navbar */
+  --text: #22223b; /* Dark text */
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--primary);
+  color: var(--text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+#site-loader {
+  position: fixed;
+  z-index: 20000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--primary, #14121f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 2, 0.6, 1);
+}
+.loader-content {
+  text-align: center;
+  animation: loaderPop 1s cubic-bezier(0.4, 2, 0.6, 1);
+}
+@keyframes loaderPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.loader-emoji {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1.2rem;
+  animation: loaderBounce 1.2s infinite alternate;
+}
+@keyframes loaderBounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-18px);
+  }
+}
+.loader-title {
+  font-size: 2.3rem;
+  color: var(--accent, #ff4c29);
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.loader-tagline {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.7;
+}
+body.loading {
+  overflow: hidden !important;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--secondary);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.navbar a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.slide {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--primary);
+  border-bottom: 2px solid #fae5a7;
+}
+
+.slide:nth-child(even) {
+  background: #fffde7;
+}
+
+.slide-title {
+  font-size: 3rem;
+  color: var(--accent-dark);
+  margin-bottom: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.card {
+  background: var(--secondary);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(79, 140, 255, 0.1);
+  text-align: center;
+  color: #222;
+}
+
+.card img {
+  width: 160px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.icons a {
+  margin: 0 0.5rem;
+  color: var(--accent-dark);
+  font-size: 1.3rem;
+  transition: transform 0.3s;
+}
+.icons a:hover {
+  transform: scale(1.2);
+  color: var(--accent);
+}
+
+.about {
+  max-width: 800px;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+  color: #444;
+}
+.about.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.skill {
+  background: var(--secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+  color: var(--accent-dark);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.04);
+}
+.skill:hover {
+  transform: scale(1.08);
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Carousel styles */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-arrow {
+  background: var(--accent-dark);
+  color: var(--secondary);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-arrow:hover {
+  background: var(--accent);
+}
+
+.carousel-card-list {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  color: var(--text);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.carousel-card.to-left {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.carousel-card.to-right {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.carousel-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent-dark);
+}
+
+.carousel-card p {
+  margin: 0;
+  color: #444;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  width: 100%;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+.contact-form button {
+  background-color: var(--accent-dark);
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+.contact-form button:hover {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #ffd60a99;
+}
+
+/* Animation classes */
+.fade-in,
+.fade-up,
+.fade-left,
+.fade-in-up,
+.scale-in,
+.zoom-in,
+.slide-down {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .slide-title {
+    font-size: 2rem;
+  }
+  .carousel-card-list {
+    width: 95vw;
+  }
+}
