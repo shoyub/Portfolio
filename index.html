@@ -167,16 +167,22 @@
       </div>
     </div>
 
-    <div class="slide fade-in" id="contact">
-      <h2 class="slide-title">📬 Let's Connect</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Name" required />
-        <input type="email" placeholder="Email" required />
-        <textarea placeholder="Message" rows="4" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-      <p class="footer">Made with ❤️ Shoyub Khan 2025.</p>
-    </div>
+   <div class="slide fade-in" id="contact">
+  <h2 class="slide-title">📬 Let's Connect</h2>
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/mkgbdaan"
+    method="POST"
+    id="contactForm"
+  >
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <textarea name="message" placeholder="Message" rows="4" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <p id="form-status" style="margin-top: 1rem; color: green;"></p>
+  <p class="footer">Made with ❤️ Shoyub Khan 2025.</p>
+</div>
     <script src="script.js"></script>
   </body>
 </html>
