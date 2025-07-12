@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // For all carousels on the page
+  // Carousel functionality
   document.querySelectorAll(".carousel-container").forEach((carousel) => {
     const cards = carousel.querySelectorAll(".carousel-card");
     const leftBtn = carousel.querySelector(".carousel-arrow.left");
@@ -35,53 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showCard(current);
   });
 
-  // Intersection Observer for fade-in slides
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("appear");
-        } else {
-          entry.target.classList.remove("appear");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  document
-    .querySelectorAll(
-      ".slide, .fade-in, .fade-up, .fade-left, .fade-in-up, .scale-in, .zoom-in, .slide-down, .about"
-    )
-    .forEach((el) => observer.observe(el));
-});
-
-// Opening animation: fade out loader after 1.6s
-document.body.classList.add("loading");
-window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    document.getElementById("site-loader").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("site-loader").style.display = "none";
-      document.body.classList.remove("loading");
-    }, 800); // match transition
-  }, 1600); // loader visible for 1.6s
-});
-
-// Opening animation: fade out loader after 1.6s
-document.body.classList.add("loading");
-window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    document.getElementById("site-loader").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("site-loader").style.display = "none";
-      document.body.classList.remove("loading");
-    }, 800); // match transition
-  }, 1600); // loader visible for 1.6s
-});
-
-// Existing Intersection Observer code...
-document.addEventListener("DOMContentLoaded", () => {
+  // Intersection Observer for animations
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -96,7 +50,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(
-      ".fade-in, .fade-up, .fade-left, .fade-in-up, .scale-in, .zoom-in, .slide-down, .about"
+      ".slide, .fade-in, .fade-up, .fade-left, .fade-in-up, .scale-in, .zoom-in, .slide-down, .about"
     )
     .forEach((el) => observer.observe(el));
+
+  // Contact form submission with Formspree
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("form-status");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          status.textContent = "✅ Message sent successfully!";
+          status.style.color = "green";
+          form.reset();
+        } else {
+          status.textContent = "❌ Error sending message. Please try again.";
+          status.style.color = "red";
+        }
+      } catch (error) {
+        status.textContent = "⚠️ Network error. Please try again later.";
+        status.style.color = "red";
+      }
+    });
+  }
+});
+
+// Loader animation
+document.body.classList.add("loading");
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.getElementById("site-loader").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("site-loader").style.display = "none";
+      document.body.classList.remove("loading");
+    }, 800);
+  }, 1600);
 });
