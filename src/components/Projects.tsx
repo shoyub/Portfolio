@@ -23,6 +23,26 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Quiz Microservices Platform",
+      description: [
+        "Developed a backend-focused quiz application using a microservice-style architecture with separate services for API Gateway, Quiz Service, Question Service, and Service Registry using Spring Boot.",
+        "Designed and implemented RESTful APIs and integrated PostgreSQL database with JPA/Hibernate for persistent storage of quizzes and questions.",
+        "Enabled inter-service communication using REST templates and centralized request routing through an API Gateway, improving scalability and maintainability.",
+      ],
+      image:
+        "https://repository-images.githubusercontent.com/182525249/aadd7a80-54fe-11eb-9872-ccd06b8789b6",
+      githubUrl: "https://github.com/shoyub/Quiz-Microservices",
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "REST APIs",
+        "Eureka",
+        "OpenFeign",
+      ],
+    },
+    {
       title: "Lingo: Interactive Language Learning Platform",
       description: [
         "Built a Duolingo-style platform supporting Indian and foreign languages with gamified lessons, quizzes, and progress tracking.",
@@ -142,10 +162,17 @@ const Projects = () => {
         "Designed and implemented RESTful APIs and integrated PostgreSQL database with JPA/Hibernate for persistent storage of quizzes and questions.",
         "Enabled inter-service communication using REST templates and centralized request routing through an API Gateway, improving scalability and maintainability.",
       ],
-      image:
-        "https://spring.io/images/projects/spring-boot-social.png",
+      image: "https://spring.io/images/projects/spring-boot-social.png",
       githubUrl: "https://github.com/shoyub/Quiz-Microservices",
-      technologies: ["Java", "Spring Boot", "Spring Data JPA", "PostgreSQL", "REST APIs", "Eureka", "OpenFeign"],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "REST APIs",
+        "Eureka",
+        "OpenFeign",
+      ],
     },
   ];
 
