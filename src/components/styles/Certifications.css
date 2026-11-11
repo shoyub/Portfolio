@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 15;
   width: 100%;
   padding: 80px 0;
   margin: auto;

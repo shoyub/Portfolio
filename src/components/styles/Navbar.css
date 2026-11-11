@@ -30,20 +30,26 @@
   font-weight: 600;
   cursor: pointer;
 }
-.navbar-connect {
-  position: absolute;
-  display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  font-weight: 500;
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .navbar-title {
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.2px;
+}
+.navbar-connect {
+  display: none;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  color: #c8bfff;
+  transition: color 0.3s ease;
+}
+.navbar-connect:hover {
+  color: #ffffff;
 }
 @media only screen and (min-width: 500px) {
   .header {

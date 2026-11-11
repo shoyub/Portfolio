@@ -68,16 +68,18 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          SK
-        </a>
-        <a
-          href={`mailto:${config.contact.email}`}
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          {config.contact.email}
-        </a>
+        <div className="navbar-left">
+          <a href="/#" className="navbar-title" data-cursor="disable">
+            SK
+          </a>
+          <a
+            href={`mailto:${config.contact.email}`}
+            className="navbar-connect"
+            data-cursor="disable"
+          >
+            {config.contact.email}
+          </a>
+        </div>
         <ul>
           <li>
             <a data-href="#about" href="#about">

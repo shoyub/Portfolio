@@ -25,7 +25,7 @@ const Work = () => {
       const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
       let padding: number =
         parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
+      translateX = Math.max(500, rect.width * box.length - (rectLeft + parentWidth) + padding);
     }
 
     setTranslateX();

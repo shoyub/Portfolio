@@ -3,9 +3,18 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
-  directionalLight.intensity = 0;
-  directionalLight.position.set(-0.47, -0.32, -1);
+  // Front directional light directly illuminating the character
+  const frontLight = new THREE.DirectionalLight(0xffffff, 2.0);
+  frontLight.position.set(0, 15, 25);
+  scene.add(frontLight);
+
+  // Ambient light for overall fill
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+  scene.add(ambientLight);
+
+  // Backlight for rim effect
+  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 1.5);
+  directionalLight.position.set(-0.47, 5, -5);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
@@ -13,6 +22,7 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
+  // Desk monitor light
   const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
@@ -23,13 +33,13 @@ const setLighting = (scene: THREE.Scene) => {
     .load("char_enviorment.hdr", function (texture) {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
-      scene.environmentIntensity = 0;
+      scene.environmentIntensity = 0.8;
       scene.environmentRotation.set(5.76, 85.85, 1);
     });
 
   function setPointLight(screenLight: any) {
-    if (screenLight.material.opacity > 0.9) {
-      pointLight.intensity = screenLight.material.emissiveIntensity * 20;
+    if (screenLight && screenLight.material && screenLight.material.opacity > 0.9) {
+      pointLight.intensity = (screenLight.material.emissiveIntensity || 1) * 20;
     } else {
       pointLight.intensity = 0;
     }
@@ -37,13 +47,23 @@ const setLighting = (scene: THREE.Scene) => {
   const duration = 2;
   const ease = "power2.inOut";
   function turnOnLights() {
+    gsap.to(frontLight, {
+      intensity: 2.2,
+      duration: duration,
+      ease: ease,
+    });
+    gsap.to(ambientLight, {
+      intensity: 1.2,
+      duration: duration,
+      ease: ease,
+    });
     gsap.to(scene, {
-      environmentIntensity: 0.64,
+      environmentIntensity: 0.8,
       duration: duration,
       ease: ease,
     });
     gsap.to(directionalLight, {
-      intensity: 1,
+      intensity: 1.8,
       duration: duration,
       ease: ease,
     });
