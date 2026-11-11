@@ -77,7 +77,8 @@ const Education = () => {
     },
     {
       title: "Postman API Fundamentals Student Expert",
-      image: "https://www.postman.com/_assets/img/logo/postman-logo-orange.svg",
+      image:
+        "https://cc.sj-cdn.net/instructor/3d8458f2k85sh-postman/courses/1a8b8cdxvqjxq/promo-image.1676069333.png",
       link: "https://drive.google.com/file/d/1EedLTtLua6VBVIu2IhkLxvkfbsNUNVyj/view?usp=drivesdk",
     },
   ];
