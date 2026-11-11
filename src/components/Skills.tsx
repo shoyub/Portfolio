@@ -27,7 +27,6 @@ const Skills = () => {
         { name: "AWS", level: "Intermediate" },
         { name: "Docker", level: "Intermediate" },
         { name: "Git/GitHub", level: "Advanced" },
-        { name: "Selenium", level: "Intermediate" },
       ],
     },
   ];
