@@ -124,20 +124,12 @@
   min-height: 100px;
 }
 
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  margin-top: 6px;
-}
-
 .contact-submit-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 15px 28px;
+  padding: 15px 30px;
   background: linear-gradient(135deg, #aa42ff, #7f40ff);
   color: #ffffff;
   border: none;
@@ -148,34 +140,18 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 6px 20px rgba(170, 66, 255, 0.35);
-  flex: 1;
+  margin-top: 6px;
 }
 
-.contact-submit-btn:hover {
+.contact-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(170, 66, 255, 0.55);
   background: linear-gradient(135deg, #be63ff, #8e54ff);
 }
 
-.contact-mailto-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(194, 164, 255, 0.3);
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.contact-mailto-btn:hover {
-  border-color: #aa42ff;
-  background: rgba(170, 66, 255, 0.12);
-  color: #ffffff;
+.contact-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .send-icon {
@@ -183,13 +159,20 @@
   transition: transform 0.2s ease;
 }
 
-.contact-submit-btn:hover .send-icon {
+.contact-submit-btn:hover:not(:disabled) .send-icon {
   transform: translateX(3px) translateY(-1px);
 }
 
 .form-success-msg {
-  font-size: 13px;
+  font-size: 14px;
   color: #a7f3d0;
+  margin: 6px 0 0 0;
+  animation: contactFadeIn 0.4s ease;
+}
+
+.form-error-msg {
+  font-size: 14px;
+  color: #fca5a5;
   margin: 6px 0 0 0;
   animation: contactFadeIn 0.4s ease;
 }

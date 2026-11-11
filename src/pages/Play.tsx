@@ -110,10 +110,106 @@ const PROJECT_DETAILS = [
 
 let singleProjectCounter = 0;
 
+function getRedirectAction(query: string): { url: string; reply: string } | null {
+  const q = query.trim().toLowerCase();
+
+  if (/\b(linkedin|linked\s*in)\b/.test(q) && /\b(github|git\s*hub)\b/.test(q)) {
+    return {
+      url: "https://www.linkedin.com/in/shoyub-khan",
+      reply:
+        "Redirecting you to my LinkedIn profile (https://www.linkedin.com/in/shoyub-khan)! 🔗 You can also check out my GitHub at https://github.com/shoyub.",
+    };
+  }
+
+  if (/\b(linkedin|linked\s*in)\b/.test(q)) {
+    return {
+      url: "https://www.linkedin.com/in/shoyub-khan",
+      reply:
+        "Redirecting you to my LinkedIn profile (https://www.linkedin.com/in/shoyub-khan)! 🔗 Let's connect!",
+    };
+  }
+
+  if (/\b(github|git\s*hub)\b/.test(q)) {
+    return {
+      url: "https://github.com/shoyub",
+      reply:
+        "Redirecting you to my GitHub profile (https://github.com/shoyub)! 💻 Feel free to explore my repositories and code!",
+    };
+  }
+
+  return null;
+}
+
+function getOutOfBoundsReply(q: string): string | null {
+  const mentionsShoyubOrPossessive =
+    /\b(shoyub|your|you|yours|u|ur|quantiphi|icave|vit|retailco|lingo)\b/.test(q);
+
+  // Rule A: Asking to write/generate/give code, programs, scripts, functions, or solve coding/DSA problems
+  const isCodingTaskRequest =
+    /\b(give|write|create|generate|make|show|build|implement|solve|debug|fix)\b.*\b(code|program|script|function|algorithm|query|snippet|class|loop|array|string|numbers?|addition|sum|factorial|fibonacci|palindrome|sorting|binary\s*search|leetcode)\b/.test(
+      q
+    ) ||
+    /\b(code|program|script|function|algorithm)\s+(for|to|in|of|that)\b/.test(q) ||
+    /\b(adding|add|subtract|multiply|divide|reverse|sort|find)\s+\d*\s*(two|2|three|3|numbers?|strings?|arrays?|elements?|linked\s*list)\b/.test(
+      q
+    ) ||
+    /\b(how\s+to\s+(code|program|write|implement|install|configure|center\s+a\s+div))\b/.test(q);
+
+  if (isCodingTaskRequest) {
+    return "Haha, I'm Shoyub's portfolio assistant, not a general code generator or compiler! 😄 That request is outside my scope since it's not about me. If you'd like to see my real-world code, ask me about my projects (like RetailCo, Real-Time Chat, or Quiz Microservices) or type \"GitHub\" to jump straight to my repositories!";
+  }
+
+  // Rule B: Pure math / arithmetic calculations or homework questions
+  const isMathOrCalculation =
+    /^\s*\d+\s*[\+\-\*\/\%\^]\s*\d+/.test(q) ||
+    /\b(calculate|compute|solve\s+for|square\s+root|derivative|integral|equation|math\s+problem)\b/.test(
+      q
+    ) ||
+    /\bwhat\s+is\s+\d+\s*(\+|\-|\*|\/|plus|minus|times|divided\s+by)\s*\d+/.test(q);
+
+  if (isMathOrCalculation) {
+    return "I'm here to talk about Shoyub Khan's software engineering journey, not crunch math problems! 😊 Ask me about my internships, distributed systems projects, or tech stack instead.";
+  }
+
+  // Rule C: General textbook definitions ("what is python", "what is java", "difference between...") that don't ask about Shoyub
+  const isTextbookDefinition =
+    !mentionsShoyubOrPossessive &&
+    (/^(what\s+is|what\s+are|define|explain\s+what|difference\s+between|meaning\s+of)\s+(a\s+|an\s+|the\s+)?(python|java|javascript|typescript|react|fastapi|spring\s*boot|docker|redis|rabbitmq|sql|mongodb|postgresql|html|css|oop|dsa|microservices|api|rest|cloud|ai|ml|deep\s*learning)\b/.test(
+      q
+    ) ||
+      /\b(syntax\s+of|tutorial\s+on|course\s+for)\b/.test(q));
+
+  if (isTextbookDefinition) {
+    return "That's a general technical definition rather than a question about me! 😊 If you want to know how I use these technologies in my work, ask \"What is your tech stack?\" or \"Explain your projects!\"";
+  }
+
+  // Rule D: General world knowledge, trivia, politics, celebrities, weather, recipes, entertainment, jokes, essays
+  const isGeneralWorldQuery =
+    /\b(weather|forecast|temperature|recipe|cook|movie|song|lyrics|bitcoin|crypto|stock\s*price|president|prime\s*minister|capital\s+of|population\s+of|tell\s+(me\s+)?a\s+joke|write\s+(a\s+|an\s+)?(essay|poem|story|letter|email)|translate|horoscope|news|politics|virat|messi|ronaldo|elon\s*musk|donald\s*trump|modi|chatgpt|openai)\b/.test(
+      q
+    ) ||
+    (!mentionsShoyubOrPossessive &&
+      /^(who\s+is|who\s+was|where\s+is|when\s+was|why\s+is|how\s+old\s+is|what\s+is\s+the\s+capital)\b/.test(
+        q
+      ));
+
+  if (isGeneralWorldQuery) {
+    return "That's outside my scope — it's not about me! 😊 I only answer questions related to Shoyub Khan, my software engineering experience at Quantiphi & iCAVE Infotech, my projects, skills, and education at VIT Vellore.";
+  }
+
+  return null;
+}
+
 function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
   const q = query.trim().toLowerCase();
   const prevAssistantMsg =
     [...history].reverse().find((m) => m.role === "assistant")?.content.toLowerCase() || "";
+
+  // 0. Check out-of-bounds / off-topic rules FIRST so general coding/trivia queries never trigger portfolio keyword rules
+  const outOfBounds = getOutOfBoundsReply(q);
+  if (outOfBounds) {
+    return outOfBounds;
+  }
 
   // 1. Check if the user is asking about a specific project by name/keyword
   for (const proj of PROJECT_DETAILS) {
@@ -136,10 +232,7 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
   }
 
   // 3. Check if the user asks for all projects / project list
-  if (
-    /\b(projects?|built|portfolio|works?|creations?|applications?|apps?)\b/.test(q) &&
-    !/\b(weather|recipe|movie|song|stock|bitcoin|crypto|president|capital|math|solve)\b/.test(q)
-  ) {
+  if (/\b(projects?|built|portfolio|works?|creations?|applications?|apps?)\b/.test(q)) {
     return "Here are the 7 key projects I've built:\n1. RetailCo Warehouse & Fulfilment System (FastAPI, React 18, SQLAlchemy 2.0, Pytest, GitLab CI)\n2. Real-Time Chat Application (Socket.IO, Redis Pub/Sub, RabbitMQ, Docker)\n3. Quiz Microservices Platform (Java, Spring Boot, Eureka, OpenFeign, PostgreSQL)\n4. Phishing Detection System (FastAPI, Scikit-learn ML, MongoDB)\n5. AI Search Chatbot (LangChain, Groq, Llama 3, RAG)\n6. Next Word Prediction System (TensorFlow, LSTM & GRU, Streamlit)\n7. Lingo Language Learning Platform (Next.js 14, TypeScript, PostgreSQL, Stripe)\n\nAsk me to explain any of these by name (e.g., \"explain RetailCo\" or \"explain Quiz Microservices\")!";
   }
 
@@ -158,7 +251,7 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
 
   // 6. Education / College / VIT / CGPA / School
   if (/\b(education|college|university|vit|vellore|cgpa|gpa|grade|marks|percentage|degree|b\.?tech|branch|major|study|studied|school|narayana|intermediate|10th|12th|ssc|mpc)\b/.test(q)) {
-    return "I completed my B.Tech in Computer Science & Engineering from Vellore Institute of Technology (VIT Vellore, Sep 2022 – May 2026) with a CGPA of 8.58/10, where I also served as Senior Core Committee Member at SCRS. Prior to VIT, I completed Class 12 (MPC) at Narayan Junior College (Aug 2020 – Jul 2022) with 91.3%, and Class 10 (SSC) at Narayana High School (Aug 2019 – May 2020) with 96.8% Distinction, where I represented the Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket).";
+    return "I completed my B.Tech in Computer Science & Engineering from Vellore Institute of Technology (VIT Vellore, 2026) with a CGPA of 8.58/10, where I also served as Senior Core Committee Member at SCRS. Prior to VIT, I completed Class 12 (MPC) at Narayan Junior College (2022) with 91.3%, and Class 10 (SSC) at Narayana High School (2020) with 96.8% Distinction, where I represented the Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket).";
   }
 
   // 7. Certifications
@@ -167,18 +260,27 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
   }
 
   // 8. Sports / Cricket / Extracurriculars / Leadership / Clubs / Hobbies
-  if (/\b(cricket|sports?|hobby|hobbies|extracurricular|leadership|club|scrs|soft\s*computing|workshop|mentor|achievement|award|sgfi|national|andhra)\b/.test(q)) {
-    return "During my Secondary School (Narayana High School, 2017–2020), I represented the Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket) 🏏. During my B.Tech at VIT Vellore (2022–2026), I served as a Senior Core Committee Member of the Soft Computing Research Society (SCRS), organizing 5+ technical workshops and mentoring 100+ students!";
+  if (/\b(cricket|sports?|hobby|hobbies|extracurricular|leadership|club|scrs|soft\s*computing|workshop|mentor|achievement|award|sgfi|andhra)\b/.test(q)) {
+    return "During my Secondary School at Narayana High School (completed 2020), I represented the Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket) 🏏. During my B.Tech at VIT Vellore (completed 2026), I served as a Senior Core Committee Member of the Soft Computing Research Society (SCRS), organizing 5+ technical workshops and mentoring 100+ students!";
   }
 
-  // 9. Specific or general technical skills / tech stack
-  if (/\b(skills?|tech\s*stack|technologies|tools|languages|frameworks|backend|frontend|fullstack|full-stack|database|cloud|devops|java|python|spring\s*boot|fastapi|react|typescript|javascript|node|postgres|postgresql|mongodb|mysql|redis|docker|SDD|openapi|dsa|oop|microservices)\b/.test(q)) {
+  // 9. Technical skills / tech stack (requires skill-related intent or asking about Shoyub's familiarity with a tech)
+  const asksAboutSkills =
+    /\b(skills?|tech\s*stack|technologies|tools|frameworks|proficiency|proficient|expertise|strengths|strong\s*in|good\s*at|familiar\s*with|know|use|using|work\s*with|languages)\b/.test(
+      q
+    ) ||
+    (mentionsAboutShoyub(q) &&
+      /\b(backend|frontend|fullstack|full-stack|database|cloud|devops|java|python|spring\s*boot|fastapi|react|typescript|javascript|node|postgres|postgresql|mongodb|mysql|redis|docker|sdd|openapi|dsa|oop|microservices)\b/.test(
+        q
+      ));
+
+  if (asksAboutSkills) {
     return "My technical stack spans:\n• Backend & Microservices: Java, Python, Spring Boot, FastAPI, Node.js, REST APIs, Netflix Eureka, OpenFeign, Spec-Driven Development (OpenAPI)\n• Frontend: React.js, Next.js 14, TypeScript, JavaScript, Vite, Tailwind CSS\n• Databases & Messaging: PostgreSQL, MySQL, MongoDB, SQLite, SQLAlchemy 2.0, Redis Pub/Sub, RabbitMQ, Socket.IO\n• Cloud, AI & DevOps: Google Cloud Platform (GCP), Gemini Enterprise Agents, LangChain, Llama 3, Docker, GitLab CI, Pytest.";
   }
 
-  // 10. Contact / Email / Phone / LinkedIn / GitHub / Resume / Hiring / Location
-  if (/\b(contact|email|mail|phone|call|number|reach|linkedin|github|connect|hire|hiring|available|availability|open\s*to\s*work|resume|cv|location|where\s*are\s*you|based|city|bengaluru|bangalore|india)\b/.test(q)) {
-    return "I'm based in Bengaluru, Karnataka, India 📍 and open to software engineering opportunities! You can reach me at:\n• Email: shoyub.khan01@gmail.com\n• Phone: +91 7330734080\n• LinkedIn: linkedin.com/in/shoyub-khan\n• GitHub: github.com/shoyub\nYou can also view or download my resume directly from the RESUME link in the navbar!";
+  // 10. Contact / Email / Phone / Resume / Hiring / Location
+  if (/\b(contact|email|mail|phone|call|number|reach|connect|hire|hiring|available|availability|open\s*to\s*work|resume|cv|location|where\s*are\s*you|based|city|bengaluru|bangalore)\b/.test(q)) {
+    return "I'm based in Bengaluru, Karnataka, India 📍 and open to software engineering opportunities! You can reach me at:\n• Email: shoyub.khan01@gmail.com\n• Phone: +91 7330734080\n• Type \"LinkedIn\" or \"GitHub\" here and I'll redirect you directly to my profiles!";
   }
 
   // 11. Chess / Game
@@ -195,7 +297,7 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
 
   // 13. Greetings / Small talk / Thanks
   if (/^(hi|hello|hey|yo|hola|greetings|good\s*(morning|afternoon|evening)|howdy|sup|what'?s\s*up)\b/.test(q)) {
-    return "Hey there! 👋 I'm Shoyub Khan, an SDE Intern at Quantiphi and CSE graduate from VIT Vellore. Ask me about any of my projects (like RetailCo, Real-Time Chat, or Quiz Microservices), my internships, tech stack, certifications, or make a move on the chess board!";
+    return "Hey there! 👋 I'm Shoyub Khan, an SDE Intern at Quantiphi and CSE graduate from VIT Vellore. Ask me about any of my projects (like RetailCo, Real-Time Chat, or Quiz Microservices), my internships, tech stack, certifications, or type \"LinkedIn\" / \"GitHub\" to visit my profiles!";
   }
   if (/\b(how\s*are\s*you|how'?s\s*it\s*going)\b/.test(q)) {
     return "I'm doing great, thanks for asking! 😊 Ready to chat about my software engineering work, projects, or play a game of chess with you. What would you like to know about me?";
@@ -205,7 +307,11 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
   }
 
   // 14. Strict guardrail for any outside / unrelated questions
-  return "That's outside my scope — it's not about me! 😊 I only answer questions about Shoyub Khan. Feel free to ask about my SDE Internship at Quantiphi, my projects (RetailCo, Real-Time Chat, Quiz Microservices, Phishing Detection, AI Search Chatbot, Next Word Prediction, or Lingo), my tech stack, education at VIT Vellore, or certifications!";
+  return "That's outside my scope — it's not about me! 😊 I only answer questions about Shoyub Khan. Feel free to ask about my SDE Internship at Quantiphi, my projects (RetailCo, Real-Time Chat, Quiz Microservices, Phishing Detection, AI Search Chatbot, Next Word Prediction, or Lingo), my tech stack, education at VIT Vellore, or type \"LinkedIn\" / \"GitHub\" to open my profiles!";
+}
+
+function mentionsAboutShoyub(q: string): boolean {
+  return /\b(you|your|yours|u|ur|shoyub|know|have|experience|worked|stack|skill)\b/.test(q);
 }
 
 const Play = () => {
@@ -382,6 +488,18 @@ const Play = () => {
     const updatedHistory = [...chatMessages, userMessage];
     setChatMessages(updatedHistory);
     setChatInput("");
+
+    // Immediate redirect if user asks for LinkedIn or GitHub
+    const redirectAction = getRedirectAction(currentQuery);
+    if (redirectAction) {
+      window.open(redirectAction.url, "_blank", "noopener,noreferrer");
+      setChatMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: redirectAction.reply },
+      ]);
+      return;
+    }
+
     setIsTyping(true);
 
     try {

@@ -10,7 +10,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -18,96 +18,53 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const buildFormattedMail = () => {
-    const cleanName = formData.name.trim();
-    const cleanEmail = formData.email.trim();
-    const cleanSubject = formData.subject.trim() || "General Inquiry";
-    const cleanMessage = formData.message.trim();
-
-    const formattedSubject = `Portfolio Mail from ${cleanName} - ${cleanSubject}`;
-    const formattedBody = [
-      "=========================================",
-      "PORTFOLIO MAIL FROM USER",
-      "=========================================",
-      `Who (Name)   : ${cleanName}`,
-      `Sender Email : ${cleanEmail}`,
-      `Subject      : ${cleanSubject}`,
-      "-----------------------------------------",
-      "",
-      "Message:",
-      cleanMessage,
-      "=========================================",
-    ].join("\n");
-
-    return {
-      cleanName,
-      cleanEmail,
-      cleanSubject,
-      cleanMessage,
-      formattedSubject,
-      formattedBody,
-    };
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    const cleanName = formData.name.trim();
+    const cleanEmail = formData.email.trim();
+    const cleanSubject = formData.subject.trim();
+    const cleanMessage = formData.message.trim();
+
+    if (!cleanName || !cleanEmail || !cleanSubject || !cleanMessage) {
       return;
     }
 
-    const {
-      cleanName,
-      cleanEmail,
-      cleanSubject,
-      cleanMessage,
-      formattedSubject,
-      formattedBody,
-    } = buildFormattedMail();
-
     setStatus("sending");
 
-    const encodedSubject = encodeURIComponent(formattedSubject);
-    const encodedBody = encodeURIComponent(formattedBody);
-    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      config.contact.email
-    )}&su=${encodedSubject}&body=${encodedBody}`;
-
-    // Open pre-formatted Gmail Compose in a new tab so it works immediately in browser
-    window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
-
-    // Also dispatch directly via FormSubmit AJAX endpoint in the background
     try {
-      await fetch(`https://formsubmit.co/ajax/${config.contact.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: formattedSubject,
-          _replyto: cleanEmail,
-          _template: "table",
-          _captcha: "false",
-          Mail_Header: "Portfolio Mail from User",
-          Who_Name: cleanName,
-          Sender_Email: cleanEmail,
-          Subject: cleanSubject,
-          Message: cleanMessage,
-        }),
-      });
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${config.contact.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: `Portfolio Mail from ${cleanName} - ${cleanSubject}`,
+            _replyto: cleanEmail,
+            _template: "table",
+            _captcha: "false",
+            "Portfolio Mail From": cleanName,
+            "Sender Email": cleanEmail,
+            Subject: cleanSubject,
+            Message: cleanMessage,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 7000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
     } catch {
-      // Gmail tab is already opened as primary browser mail handler
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
     }
-
-    setStatus("sent");
-    setTimeout(() => setStatus("idle"), 7000);
-  };
-
-  const handleDefaultMailApp = () => {
-    const { formattedSubject, formattedBody } = buildFormattedMail();
-    window.location.href = `mailto:${config.contact.email}?subject=${encodeURIComponent(
-      formattedSubject
-    )}&body=${encodeURIComponent(formattedBody)}`;
   };
 
   return (
@@ -115,7 +72,7 @@ const Contact = () => {
       <div className="contact-container section-container">
         <h3>{config.developer.fullName}</h3>
         <p className="contact-subhead">
-          Have an opportunity or question? Send a formatted portfolio mail directly to Shoyub!
+          Have an opportunity or question? Send a message directly to Shoyub!
         </p>
 
         <div className="contact-grid">
@@ -125,7 +82,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Your Name (Who)</label>
+                  <label htmlFor="name">Your Name</label>
                   <input
                     type="text"
                     id="name"
@@ -181,31 +138,25 @@ const Contact = () => {
                 />
               </div>
 
-              <div className="contact-actions">
-                <button
-                  type="submit"
-                  className="contact-submit-btn"
-                  data-cursor="disable"
-                >
-                  <span>
-                    {status === "sending" ? "Preparing Mail..." : "Send Portfolio Mail"}
-                  </span>
-                  <MdSend className="send-icon" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleDefaultMailApp}
-                  className="contact-mailto-btn"
-                  data-cursor="disable"
-                >
-                  Open in Default Mail App
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="contact-submit-btn"
+                disabled={status === "sending"}
+                data-cursor="disable"
+              >
+                <span>{status === "sending" ? "Sending..." : "Send"}</span>
+                <MdSend className="send-icon" />
+              </button>
 
               {status === "sent" && (
                 <p className="form-success-msg">
-                  ✓ Formatted as &ldquo;Portfolio Mail from {formData.name} - {formData.subject}&rdquo; for {config.contact.email}!
+                  ✓ Sent! Shoyub will get back to you soon.
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="form-error-msg">
+                  Something went wrong while sending. Please try again.
                 </p>
               )}
             </form>
