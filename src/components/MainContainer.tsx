@@ -12,18 +12,21 @@ import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
+import { setAllTimeline } from "./utils/GsapScroll";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
+    window.innerWidth > 768
   );
-  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
-  const [shouldRenderCharacter, setShouldRenderCharacter] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
 
   useEffect(() => {
+    setAllTimeline();
     const resizeHandler = () => {
       setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
+      const desktop = window.innerWidth > 768;
+      setIsDesktopView(desktop);
+      setIsMobile(!desktop);
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
@@ -32,51 +35,21 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (window.innerWidth <= 1024) return;
-
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
-    let idleId: number | undefined;
-    const win = window as Window & {
-      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
-      cancelIdleCallback?: (handle: number) => void;
-    };
-
-    const mountCharacter = () => setShouldRenderCharacter(true);
-
-    if (typeof win.requestIdleCallback === "function") {
-      idleId = win.requestIdleCallback(mountCharacter, { timeout: 1500 });
-    } else {
-      timeoutId = setTimeout(mountCharacter, 1200);
-    }
-
-    return () => {
-      if (idleId !== undefined && typeof win.cancelIdleCallback === "function") {
-        win.cancelIdleCallback(idleId);
-      }
-      if (timeoutId !== undefined) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, []);
-
   return (
     <div className="container-main">
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && !isMobile && shouldRenderCharacter && children}
-      <div className="container-main">
-        <Landing />
-        <About />
-        <WhatIDo />
-        <Career />
-        <Certifications />
-        <Work />
-        <TechStackNew />
-        <CallToAction />
-        <Contact />
-      </div>
+      {isDesktopView && !isMobile && children}
+      <Landing />
+      <About />
+      <WhatIDo />
+      <Career />
+      <Work />
+      <TechStackNew />
+      <Certifications />
+      <CallToAction />
+      <Contact />
     </div>
   );
 };

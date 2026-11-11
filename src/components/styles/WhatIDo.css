@@ -42,6 +42,7 @@
   margin-left: 200px;
   position: relative;
   display: flex;
+  opacity: 1;
 }
 
 .what-content {

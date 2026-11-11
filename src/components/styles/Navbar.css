@@ -81,3 +81,14 @@
     font-size: 18px;
   }
 }
+
+.navbar-resume-link {
+  color: var(--accentColor) !important;
+  font-weight: 700 !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-resume-link:hover {
+  color: #ffffff !important;
+}

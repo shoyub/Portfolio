@@ -61,7 +61,7 @@ export function setCharTimeline(
     }
   });
   let neckBone = character?.getObjectByName("spine005");
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 768) {
     if (character) {
       tl1
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
@@ -78,7 +78,7 @@ export function setCharTimeline(
           0
         )
         .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
+        .to(".about-section", { opacity: 0, delay: 4.5, duration: 1.5 }, 0)
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
@@ -91,8 +91,8 @@ export function setCharTimeline(
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
         .fromTo(
           ".what-box-in",
-          { display: "none" },
-          { display: "flex", duration: 0.1, delay: 6 },
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1.5, delay: 3.5 },
           0
         )
         .fromTo(
@@ -111,8 +111,8 @@ export function setCharTimeline(
       tl3
         .fromTo(
           ".character-model",
-          { y: "0%" },
-          { y: "-100%", duration: 4, ease: "none", delay: 1 },
+          { y: "0%", autoAlpha: 1 },
+          { y: "-100%", autoAlpha: 0, duration: 4, ease: "none", delay: 1 },
           0
         )
         .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
@@ -127,7 +127,7 @@ export function setCharTimeline(
           end: "bottom top",
         },
       });
-      tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
+      tM2.to(".what-box-in", { opacity: 1, duration: 0.5, delay: 0 }, 0);
     }
   }
 }
@@ -136,7 +136,7 @@ export function setAllTimeline() {
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",
-      start: "top 50%",
+      start: "top 70%",
       end: "bottom 30%",
       scrub: 1.5,
       invalidateOnRefresh: true,
@@ -173,11 +173,11 @@ export function setAllTimeline() {
       0
     );
 
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 768) {
     careerTimeline.fromTo(
       ".career-section",
       { y: 0 },
-      { y: "20%", duration: 0.5, delay: 0.2 },
+      { y: "15%", duration: 0.5, delay: 0.2 },
       0
     );
   } else {
