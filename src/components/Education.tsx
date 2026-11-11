@@ -75,6 +75,11 @@ const Education = () => {
         "https://images.credly.com/images/27db49f3-8bae-4314-8a84-884935b569db/linkedin_thumb_50_Oracle_Cloud_Infrastructure.png",
       link: "https://drive.google.com/file/d/19aESWv5aAo970Bei68JTwFRx21W58-qj/view?usp=drivesdk",
     },
+    {
+      title: "Postman API Fundamentals Student Expert",
+      image: "https://www.postman.com/_assets/img/logo/postman-logo-orange.svg",
+      link: "https://drive.google.com/file/d/1EedLTtLua6VBVIu2IhkLxvkfbsNUNVyj/view?usp=drivesdk",
+    },
   ];
 
   return (
