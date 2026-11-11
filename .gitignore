@@ -11,6 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# Large video captures & build artifacts
+video.mp4
+screen-capture*.webm
+.vercel/
 
 # Editor directories and files
 .vscode/*
@@ -22,4 +28,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.vercel
+.npmrc
+
+backup/
+.env
+redoxchess-engine/

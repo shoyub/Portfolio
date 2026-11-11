@@ -1,170 +1,191 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+:root {
+  font-family: "Geist", sans-serif;
 
-@layer base {
-  :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 20%;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  color: #eae5ec;
+  background-color: var(--backgroundColor);
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
-
-    --primary: 0 0% 15%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 15%;
-
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 0 0% 15%;
-
-    --radius: 0.5rem;
-
-    /* Portfolio specific colors */
-    --hero-bg: 0 0% 98%;
-    --text-primary: 0 0% 20%;
-    --text-secondary: 0 0% 45%;
-    --button-dark: 0 0% 15%;
-    --button-dark-foreground: 0 0% 98%;
-    --section-bg: 0 0% 100%;
-    --icon-color: 0 0% 30%;
-    --skill-bg: 0 0% 96%;
-    --project-card: 0 0% 100%;
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 25%));
-  }
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  --accentColor: #c2a4ff;
+  --backgroundColor: #0b080c;
+  --vh: 100vh;
+  --vh: 100svh;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Geist", sans-serif;
+}
 
+body {
+  overflow: hidden;
+}
+
+/* Allow scrolling on mobile */
+@media only screen and (max-width: 768px) {
   body {
-    @apply bg-background text-foreground font-sans;
-    scroll-behavior: smooth;
+    overflow: auto !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    touch-action: manipulation;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    touch-action: manipulation;
+  }
+
+  /* Ensure no fixed elements block scrolling */
+  .container-main {
+    position: static !important;
+    height: auto !important;
   }
 }
 
-@layer components {
-  .hero-section {
-    @apply min-h-screen flex items-center justify-center px-4;
-    background: hsl(var(--background));
-  }
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
 
-  .section {
-    @apply py-20 px-4;
-    background: hsl(var(--section-bg));
-  }
+a:hover {
+  color: var(--accentColor);
+}
 
-  .container {
-    @apply max-w-6xl mx-auto;
-  }
+main {
+  opacity: 1;
+  transition: 0.3s;
+}
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold text-center mb-4;
-    color: hsl(var(--text-primary));
-  }
+.main-active {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
 
-  .section-subtitle {
-    @apply text-center mb-12;
-    color: hsl(var(--text-secondary));
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
   }
+}
 
-  .skill-card {
-    @apply p-6 rounded-lg border;
-    background: hsl(var(--skill-bg));
-    border-color: hsl(var(--border));
+body {
+  margin: 0;
+  height: auto;
+  background-color: #000;
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.main-body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container-main {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.container1 {
+  width: var(--cWidth);
+  height: var(--vh);
+  margin: auto;
+  position: relative;
+}
+
+.split-line {
+  overflow: hidden;
+}
+
+.split-h2 {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.techstack {
+  width: 100%;
+  position: relative;
+  height: var(--vh);
+  min-height: 100vh;
+  margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background: linear-gradient(180deg, rgba(11, 8, 12, 0.95) 0%, rgba(11, 8, 12, 0.98) 100%);
+  background-color: var(--backgroundColor);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.techstack::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(194, 164, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(194, 164, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.techstack>* {
+  position: relative;
+  z-index: 1;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  left: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 3;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --cWidth: 94%;
   }
+}
 
-  .project-card {
-    @apply p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow;
-    background: hsl(var(--project-card));
-    border-color: hsl(var(--border));
-  }
-
-  .social-icon {
-    @apply w-6 h-6 transition-colors cursor-pointer;
-    color: hsl(var(--icon-color));
-  }
-
-  .social-icon:hover {
-    color: hsl(var(--text-primary));
-  }
-
-  .btn-primary {
-    @apply px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity;
-    background: hsl(var(--button-dark));
-    color: hsl(var(--button-dark-foreground));
-  }
-
-  .btn-secondary {
-    @apply px-6 py-3 rounded-lg font-medium hover:bg-opacity-50 transition-colors;
-    border: 1px solid hsl(var(--border));
-  }
-
-  /* 🔹 Loader animation */
-  .loader {
-    width: fit-content;
+@media screen and (max-width: 900px) {
+  .techstack h2 {
     font-size: 40px;
-    font-family: system-ui, sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #0000;
-    -webkit-text-stroke: 1px #000;
-    background: conic-gradient(from -135deg at 100% 50%, #000 90deg, #0000 0)
-        text no-repeat,
-      conic-gradient(from -135deg at 1lh 50%, #0000 90deg, #000 0) text
-        no-repeat;
-    animation: l6 2s linear infinite;
-  }
-
-  .loader:before {
-    content: "Loading";
-  }
-
-  @keyframes l6 {
-    0% {
-      background-size: 0 200%;
-      background-position: 0 0, 100% 0;
-    }
-    50% {
-      background-size: calc(60% + 0.5lh) 200%;
-      background-position: 0 0, 100% 0;
-    }
-    50.01% {
-      background-size: calc(60% + 0.5lh) 200%;
-      background-position: 0 100%, 100% 100%;
-    }
-    100% {
-      background-size: 0 200%;
-      background-position: 0 100%, 100% 100%;
-    }
   }
 }

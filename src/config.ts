@@ -1,0 +1,291 @@
+export interface Experience {
+  position: string;
+  company: string;
+  period: string;
+  location: string;
+  description: string;
+  responsibilities: string[];
+  technologies: string[];
+}
+
+export interface Project {
+  id: number;
+  title: string;
+  category: string;
+  technologies: string;
+  image: string;
+  description: string;
+  link: string;
+}
+
+export interface Certification {
+  title: string;
+  issuer: string;
+  date: string;
+  image: string;
+  link: string;
+}
+
+export const config = {
+  developer: {
+    name: "Shoyub",
+    fullName: "Shoyub Khan",
+    title: "Software Development Engineer Intern (SDE Intern)",
+    description:
+      "Software Development Engineer Intern (SDE Intern) and Full-Stack Developer with hands-on experience in building scalable web applications, distributed systems, and modern microservices. Skilled in Java, Python, Spring Boot, FastAPI, React.js, and SQL."
+  },
+  social: {
+    github: "shoyub",
+    email: "shoyub.khan01@gmail.com",
+    location: "Bengaluru, Karnataka, India"
+  },
+  about: {
+    title: "About Me",
+    description:
+      "Computer Science and Engineering graduate from VIT Vellore with hands-on experience in software development, full-stack application development, REST API development, database management, and software engineering practices. Skilled in Java, Python, Spring Boot, FastAPI, React.js, and SQL. Familiar with microservices architecture, object-oriented programming, automated testing, CI/CD, cloud technologies, and Spec-Driven Development. Strong foundation in designing maintainable applications and developing scalable software solutions."
+  },
+  experiences: [
+    {
+      position: "Software Development Engineer Intern",
+      company: "Quantiphi",
+      period: "Jan 2026 - Present",
+      location: "Bengaluru, Karnataka, India",
+      description:
+        "Engineering enterprise generative AI agents, cloud architectures, and scalable microservices. Developing Gemini Enterprise Agent workflows, GCP infrastructure, and high-performance backend systems.",
+      responsibilities: [
+        "Architecting and integrating enterprise AI agentic workflows and LLM pipelines using Google Cloud Platform (GCP) and Gemini models.",
+        "Developing high-concurrency backend services with FastAPI and Python, implementing secure REST APIs and asynchronous messaging.",
+        "Collaborating with senior cloud engineers to establish scalable microservices architecture and automated testing pipelines."
+      ],
+      technologies: ["GCP", "Gemini", "FastAPI", "Python", "Docker", "Microservices", "REST APIs", "Agentic AI"]
+    },
+    {
+      position: "Software Development Intern",
+      company: "iCAVE Infotech",
+      period: "May 2025 - Jun 2025",
+      location: "Bengaluru, Karnataka, India",
+      description:
+        "Architected and built 5+ high-performance responsive frontend components for company web applications using React.js, reducing initial page load time by 30%. Implemented modern responsive patterns and collaborated in a 3-member engineering sprint team.",
+      responsibilities: [
+        "Architected and built 5+ high-performance responsive frontend components with React.js, reducing initial page load time by 30%.",
+        "Enhanced user experience through the implementation of responsive design patterns, modular styling, and modern accessibility standards.",
+        "Collaborated with a 3-member engineering team utilizing Git version control, branch workflows, and Agile sprint development."
+      ],
+      technologies: ["React.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Git", "Agile", "REST APIs"]
+    },
+    {
+      position: "Software Development Engineer Intern",
+      company: "Distributed Systems & Cloud Architecture",
+      period: "2024 - 2025",
+      location: "Bengaluru, India",
+      description:
+        "Engineered production-grade applications including RetailCo Warehouse Management (FastAPI, React 18, SQLAlchemy), Real-Time Chat (Socket.IO, Redis Pub/Sub, RabbitMQ, Docker), and Spring Boot Microservices with Eureka and OpenFeign.",
+      responsibilities: [
+        "Developed full-stack warehouse and fulfilment management system with Spec-Driven Development and OpenAPI standards.",
+        "Built real-time messaging synchronizing instances across Redis Pub/Sub and asynchronous RabbitMQ offline queues.",
+        "Implemented microservices architecture with Spring Cloud, Eureka discovery, and OpenFeign inter-service communication.",
+        "Enforced rigorous code quality with Pytest, automated test coverage, and GitLab CI pipelines."
+      ],
+      technologies: ["Java", "Spring Boot", "FastAPI", "Python", "React", "PostgreSQL", "Redis", "RabbitMQ", "Docker"]
+    },
+    {
+      position: "B.Tech in Computer Science & Engineering",
+      company: "Vellore Institute of Technology (VIT)",
+      period: "Sep 2022 - May 2026",
+      location: "Vellore, Tamil Nadu",
+      description:
+        "CGPA: 8.58/10. Senior Core Committee Member at Soft Computing Research Society (SCRS). Organized 5+ technical workshops on web and software development mentoring 100+ students. Represented Andhra Pradesh in 63rd and 64th National SGFI Cricket.",
+      responsibilities: [
+        "Graduated with 8.58/10 CGPA across Data Structures, Algorithms, DBMS, OS, Networks, and Microservices.",
+        "Served as Senior Core Committee Member of the Soft Computing Research Society (SCRS), VIT Chapter.",
+        "Organized 5+ technical workshops mentoring 100+ students in modern web and software engineering.",
+        "Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket)."
+      ],
+      technologies: ["Data Structures & Algorithms", "OOP", "Microservices", "DBMS", "Operating Systems", "Computer Networks"]
+    },
+    {
+      position: "Intermediate (Class 12 - MPC)",
+      company: "Narayan Junior College",
+      period: "Aug 2020 - Jul 2022",
+      location: "Tirupati, Andhra Pradesh",
+      description:
+        "Graduated with 91.3% in Mathematics, Physics, and Chemistry (MPC). Developed advanced analytical problem-solving and mathematical reasoning capabilities.",
+      responsibilities: [
+        "Secured 91.3% in State Board Examinations.",
+        "Comprehensive coursework in higher mathematics, mechanics, and analytical physics."
+      ],
+      technologies: ["Mathematics", "Physics", "Analytical Problem Solving"]
+    },
+    {
+      position: "Secondary School Certificate (Class 10)",
+      company: "Narayana High School",
+      period: "Aug 2019 - May 2020",
+      location: "Piler, Andhra Pradesh",
+      description:
+        "Graduated with 96.8% with Distinction. Selected and represented Andhra Pradesh State Cricket Team at the National Level.",
+      responsibilities: [
+        "Secured 96.8% with Distinction in SSC Board examinations.",
+        "State team representative in National School Games (SGFI Cricket)."
+      ],
+      technologies: ["Academic Distinction", "State-Level Cricket"]
+    }
+  ],
+  certifications: [
+    {
+      title: "Certified Partner Specialist – Gemini Enterprise Agent Development",
+      issuer: "Google",
+      date: "July 2026",
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg",
+      link: "https://www.linkedin.com/in/shoyub-khan"
+    },
+    {
+      title: "Claude Certified Developer – Foundations",
+      issuer: "Anthropic",
+      date: "September 2026",
+      image: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg",
+      link: "https://www.linkedin.com/in/shoyub-khan"
+    },
+    {
+      title: "Oracle Cloud Application Foundation Certified Implementation Specialist",
+      issuer: "Oracle",
+      date: "August 2025",
+      image: "https://images.credly.com/images/27db49f3-8bae-4314-8a84-884935b569db/linkedin_thumb_50_Oracle_Cloud_Infrastructure.png",
+      link: "https://drive.google.com/file/d/19aESWv5aAo970Bei68JTwFRx21W58-qj/view?usp=drivesdk"
+    },
+    {
+      title: "Microsoft Certified: Azure AI Fundamentals",
+      issuer: "Microsoft",
+      date: "August 2024",
+      image: "https://i0.wp.com/thecrm.ninja/wp-content/uploads/2020/10/ai.png?fit=2087%2C1268&ssl=1",
+      link: "https://drive.google.com/file/d/1dHXZJcQt8qB1Rfo66_UTjWWDZ2qwVEoK/view?usp=drivesdk"
+    },
+    {
+      title: "Postman API Fundamentals Student Expert",
+      issuer: "Postman",
+      date: "Certified",
+      image: "https://cc.sj-cdn.net/instructor/3d8458f2k85sh-postman/courses/1a8b8cdxvqjxq/promo-image.1676069333.png",
+      link: "https://drive.google.com/file/d/1EedLTtLua6VBVIu2IhkLxvkfbsNUNVyj/view?usp=drivesdk"
+    }
+  ],
+  projects: [
+    {
+      id: 1,
+      title: "RetailCo Warehouse & Fulfilment Management System",
+      category: "Full-Stack / Supply Chain",
+      technologies: "Python, FastAPI, React 18, Vite, SQLAlchemy 2.0, Pydantic v2, SQLite, Pytest, GitLab CI",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Developed a full-stack warehouse and fulfilment management application covering inventory, orders, shipments, and supply chain workflows with service-layer architecture and Spec-Driven Development.",
+      link: "https://github.com/shoyub"
+    },
+    {
+      id: 2,
+      title: "Real-Time Chat Application",
+      category: "Full-Stack / Distributed Systems",
+      technologies: "MongoDB, Express.js, React.js, Node.js, Socket.IO, Redis, RabbitMQ, Docker",
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Real-time private & group messaging platform with Socket.IO, multi-instance synchronization using Redis Pub/Sub, asynchronous offline notifications with RabbitMQ, and Docker containerization.",
+      link: "https://github.com/shoyub/real-time-chat"
+    },
+    {
+      id: 3,
+      title: "Quiz Microservices Platform",
+      category: "Microservices Architecture",
+      technologies: "Java, Spring Boot, REST APIs, PostgreSQL, JPA/Hibernate, Netflix Eureka, OpenFeign",
+      image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Distributed microservices backend featuring independent API Gateway, Quiz Service, Question Service, Netflix Eureka discovery registry, OpenFeign IPC, and PostgreSQL persistence.",
+      link: "https://github.com/shoyub/Quiz-Microservices"
+    },
+    {
+      id: 4,
+      title: "Phishing Detection System",
+      category: "Cyber Security / ML",
+      technologies: "Python, FastAPI, Machine Learning, MongoDB, Pandas, Scikit-learn",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Hybrid phishing detection platform combining ML models and rule-based scoring trained on 11,000+ samples, paired with a high-throughput FastAPI REST API service.",
+      link: "https://github.com/shoyub/Network-Security"
+    },
+    {
+      id: 5,
+      title: "AI Search Chatbot with LangChain",
+      category: "GenAI / Agentic RAG",
+      technologies: "Python, LangChain, Groq, Llama 3, RAG, Streamlit",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Agentic AI search assistant powered by Llama 3 via Groq and LangChain agents with multi-tool dynamic RAG across Wikipedia, Arxiv, and DuckDuckGo.",
+      link: "https://github.com/shoyub/search-engine"
+    },
+    {
+      id: 6,
+      title: "Next Word Prediction System",
+      category: "Deep Learning / NLP",
+      technologies: "Python, TensorFlow, LSTM, GRU, NLP, Streamlit",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Sequential NLP deep learning engine using recurrent neural networks (LSTM & GRU) trained on classical texts with real-time Streamlit comparison interface.",
+      link: "https://github.com/shoyub/next-word-"
+    },
+    {
+      id: 7,
+      title: "Lingo: Interactive Language Learning Platform",
+      category: "Full-Stack Web App",
+      technologies: "Next.js 14, React, TypeScript, Tailwind CSS, PostgreSQL, Drizzle ORM, Stripe",
+      image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Interactive gamified language learning web platform featuring bite-sized interactive lessons, dynamic audio pronunciation, heart/quest systems, and Stripe payments.",
+      link: "https://github.com/shoyub"
+    }
+  ],
+  contact: {
+    email: "shoyub.khan01@gmail.com",
+    phone: "+91 7330734080",
+    github: "https://github.com/shoyub",
+    linkedin: "https://www.linkedin.com/in/shoyub-khan",
+    location: "Bengaluru, Karnataka, India"
+  },
+  skills: {
+    develop: {
+      title: "BACKEND & SDE",
+      description: "Scalable backends, microservices & distributed systems",
+      details:
+        "Architecting high-concurrency backend services and distributed microservices with Java, Spring Boot, Python, and FastAPI. Proficient in database modeling with PostgreSQL and MongoDB, Redis caching, RabbitMQ message brokers, and Docker containerization.",
+      tools: [
+        "Java",
+        "Spring Boot",
+        "FastAPI",
+        "Python",
+        "Node.js",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "RabbitMQ",
+        "Docker",
+        "REST APIs",
+        "Microservices"
+      ]
+    },
+    design: {
+      title: "FULL-STACK & CS",
+      description: "Modern web applications & core computer science fundamentals",
+      details:
+        "Engineering responsive web interfaces using React.js, Vite, TypeScript, and modern styling. Grounded in robust Computer Science fundamentals: Object-Oriented Design (OOP), Data Structures & Algorithms (DSA), Operating Systems, and Spec-Driven Development.",
+      tools: [
+        "React.js",
+        "TypeScript",
+        "JavaScript",
+        "Vite",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "OOP & SOLID",
+        "DSA",
+        "SQLAlchemy",
+        "GitLab CI",
+        "Git"
+      ]
+    }
+  }
+};
