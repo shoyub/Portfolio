@@ -21,7 +21,7 @@ export const hasLoadedBefore = () => hasCompletedInitialLoad;
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoadingState] = useState(() => {
-    if (window.innerWidth <= 768 || hasCompletedInitialLoad) return false;
+    if (hasCompletedInitialLoad) return false;
     return true;
   });
   const [loading, setLoading] = useState(0);
@@ -40,7 +40,7 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    if (window.innerWidth <= 768 || hasCompletedInitialLoad) {
+    if (hasCompletedInitialLoad) {
       import("../components/utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {

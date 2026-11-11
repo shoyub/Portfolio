@@ -1,24 +1,31 @@
-/* Mobile Photo - hidden by default, shown only on mobile */
-.mobile-photo {
-  display: none;
-}
-
-/* Remove mobile photo and ensure 3D character is always hidden on mobile */
+/* Mobile Landing Page Layout - 3D Character Interactive Experience */
 @media only screen and (max-width: 768px) {
-  .character-model {
-    display: none !important;
+  .landing-section {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh;
+    max-width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
   }
 
-  .landing-section,
   .landing-container {
-    height: auto !important;
+    height: 100% !important;
+    height: 100dvh !important;
     min-height: 100vh;
     max-width: 100vw;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 0 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    padding-top: 85px;
     padding-bottom: 40px;
+    pointer-events: none;
+    position: relative;
+    z-index: 10;
   }
 
   .landing-intro {
@@ -28,26 +35,32 @@
     right: auto !important;
     bottom: auto !important;
     transform: none !important;
-    padding-top: 85px;
-    margin-bottom: 20px;
-    z-index: 10;
     text-align: center;
     width: 100% !important;
-    order: 1;
-    height: auto !important;
+    pointer-events: auto;
+  }
+
+  .landing-intro h2 {
+    font-size: 16px !important;
+    letter-spacing: 2px !important;
+    color: var(--accentColor);
+    margin: 0 0 4px 0 !important;
+    text-transform: uppercase;
   }
 
   .landing-intro h1 {
     word-spacing: 0.1em;
-    font-size: 32px !important;
-    line-height: 1.2 !important;
-    margin: 0;
+    font-size: clamp(28px, 8vw, 38px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 0 !important;
   }
 
   .landing-intro h1 br {
     display: block;
     content: " ";
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
 
   .landing-info {
@@ -58,22 +71,24 @@
     bottom: auto !important;
     transform: none !important;
     text-align: center;
-    margin-top: 20px;
-    z-index: 10;
-    background: transparent;
-    padding-bottom: 50px;
+    width: 100% !important;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    height: auto !important;
-    width: 100% !important;
-    order: 3;
+    gap: 4px;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .landing-info h3 {
+    display: block !important;
+    font-size: 14px !important;
+    letter-spacing: 2px !important;
+    color: var(--accentColor);
+    margin: 0 !important;
     text-align: center;
-    display: none;
+    text-transform: uppercase;
   }
 
   .landing-info h2,
@@ -84,23 +99,24 @@
     display: block;
     width: auto;
     margin: 0 !important;
-    font-size: 20px !important;
-    line-height: 1.5 !important;
-    white-space: normal;
     text-align: center;
-    height: auto !important;
     transform: none !important;
   }
 
   .landing-h2-1 {
-    font-size: 24px !important;
-    color: var(--accentColor);
+    font-size: clamp(22px, 6vw, 30px) !important;
+    color: #c481ff !important;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
   }
 
   .landing-h2-info {
-    font-size: 18px !important;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(14px, 4vw, 18px) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
   }
 
   .landing-info-h2::after {
@@ -112,25 +128,22 @@
     display: none !important;
   }
 
-  .mobile-photo {
-    display: block;
-    position: relative !important;
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
-    z-index: 1;
-    order: 2;
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    pointer-events: none;
-    transform: none !important;
+  .character-model {
+    display: block !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 8 !important;
+    pointer-events: none !important;
   }
 
-  .mobile-photo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(194, 164, 255, 0.4));
+  .character-rim {
+    width: 280px !important;
+    height: 280px !important;
+    transform: translate(-50%, 40%) scale(1.2) !important;
   }
 }
 

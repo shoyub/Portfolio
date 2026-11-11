@@ -12,18 +12,13 @@ import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
-import { setAllTimeline } from "./utils/GsapScroll";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
+  const [, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 768
   );
-  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
 
   useEffect(() => {
-    if (window.innerWidth <= 768) {
-      setAllTimeline();
-    }
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 768);
@@ -40,7 +35,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && !isMobile && children}
+      {children}
       <div className="container-main">
         <Landing />
         <About />
