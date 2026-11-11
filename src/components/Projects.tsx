@@ -35,17 +35,17 @@ const Projects = () => {
       technologies: ["React", "Node.js", "Socket.io", "MongoDB", "WebSocket"],
     },
     {
-      title: "IMDB Top 250 Movies Chatbot",
+      title: "ResumeGO: Resume Builder Web App",
       description: [
-        "Built a full-featured IMDB clone with movie database integration",
-        "Implemented search, filtering, and user ratings functionality",
-        "Responsive design with dark/light theme support",
+        "Developed an interactive resume builder with customizable templates",
+        "Implemented clean and responsive UI using Tailwind CSS",
+        "Integrated export functionality for easy resume download",
       ],
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg",
-      githubUrl: "https://github.com/shoyub/imdb-clone",
-      technologies: ["React", "TypeScript", "TMDB API", "Tailwind CSS"],
+      image: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png",
+      githubUrl: "https://github.com/shoyub/ResumeGO",
+      technologies: ["JavaScript", "HTML", "Tailwind CSS", "Vite"],
     },
+
     {
       title: "Yumigo:Online Food Ordering App",
       description: [

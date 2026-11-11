@@ -4,9 +4,8 @@ const Skills = () => {
       title: "Languages",
       skills: [
         { name: "Java", level: "Advanced" },
-        { name: "Python", level: "Intermediate" },
-        { name: "JavaScript", level: "Advanced" },
-        { name: "SQL/PL-SQL", level: "Advanced" },
+        { name: "JavaScript", level: "Intermediate" },
+        { name: "SQL/PL-SQL", level: "Intermediate" },
         { name: "HTML/CSS", level: "Advanced" },
         { name: "TypeScript", level: "Intermediate" },
       ],
@@ -29,8 +28,6 @@ const Skills = () => {
         { name: "Docker", level: "Intermediate" },
         { name: "Git/GitHub", level: "Advanced" },
         { name: "Selenium", level: "Intermediate" },
-        { name: "RASA", level: "Basic" },
-        { name: "Pandas", level: "Intermediate" },
       ],
     },
   ];
