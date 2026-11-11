@@ -42,8 +42,8 @@ A modern, high-performance **3D interactive developer portfolio** for **Patan Ba
 ### 1) Clone the Repository
 
 ```bash
-git clone https://github.com/shoyub/portfolio-shoyub.git
-cd portfolio-shoyub
+git clone https://github.com/shoyub/Portfolio.git
+cd Portfolio
 ```
 
 ### 2) Install Dependencies
