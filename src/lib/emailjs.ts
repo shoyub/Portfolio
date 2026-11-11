@@ -21,7 +21,9 @@ export const sendEmail = async (formData: {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to send email");
+    const errorText = await response.text();
+    console.error(errorText);
+    throw new Error(errorText);
   }
 
   return response;
