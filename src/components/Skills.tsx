@@ -1,32 +1,61 @@
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Languages",
+      title: "Programming Languages",
       skills: [
         { name: "Java", level: "Advanced" },
         { name: "JavaScript", level: "Intermediate" },
-        { name: "SQL/PL-SQL", level: "Intermediate" },
-        { name: "HTML/CSS", level: "Advanced" },
+        { name: "SQL", level: "Intermediate" },
+        { name: "HTML5", level: "Advanced" },
+        { name: "CSS3", level: "Advanced" },
         { name: "TypeScript", level: "Intermediate" },
       ],
     },
     {
-      title: "Frameworks & Technologies",
+      title: "Frameworks & Libraries",
       skills: [
         { name: "React.js", level: "Advanced" },
-        { name: "Next.js", level: "Intermediate" },
         { name: "Node.js", level: "Intermediate" },
         { name: "Express.js", level: "Intermediate" },
-        { name: "MongoDB", level: "Intermediate" },
-        { name: "MySQL", level: "Advanced" },
+        { name: "Spring Boot", level: "Intermediate" },
+        { name: "Spring Data JPA", level: "Intermediate" },
+        { name: "Next.js", level: "Intermediate" },
       ],
     },
     {
-      title: "Cloud & Tools",
+      title: "Databases",
       skills: [
-        { name: "AWS", level: "Intermediate" },
+        { name: "PostgreSQL", level: "Advanced" },
+        { name: "MongoDB", level: "Intermediate" },
+        { name: "Redis", level: "Intermediate" },
+      ],
+    },
+    {
+      title: "DevOps & Cloud",
+      skills: [
         { name: "Docker", level: "Intermediate" },
-        { name: "Git/GitHub", level: "Advanced" },
+        { name: "Git", level: "Advanced" },
+        { name: "GitHub", level: "Advanced" },
+      ],
+    },
+    {
+      title: "Tools & Platforms",
+      skills: [
+        { name: "VS Code", level: "Advanced" },
+        { name: "Postman", level: "Advanced" },
+        { name: "IntelliJ IDEA", level: "Intermediate" },
+        { name: "REST APIs", level: "Advanced" },
+        { name: "RabbitMQ", level: "Intermediate" },
+      ],
+    },
+    {
+      title: "Soft Skills",
+      skills: [
+        { name: "Leadership", level: "Advanced" },
+        { name: "Event Management", level: "Intermediate" },
+        { name: "Writing", level: "Intermediate" },
+        { name: "Public Speaking", level: "Advanced" },
+        { name: "Time Management", level: "Advanced" },
       ],
     },
   ];

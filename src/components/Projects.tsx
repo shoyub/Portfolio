@@ -135,6 +135,18 @@ const Projects = () => {
       githubUrl: "https://github.com/shoyub/quiz-app",
       technologies: ["React", "TypeScript", "CSS", "Context API"],
     },
+    {
+      title: "Quiz Microservices Platform",
+      description: [
+        "Developed a backend-focused quiz application using a microservice-style architecture with separate services for API Gateway, Quiz Service, Question Service, and Service Registry using Spring Boot.",
+        "Designed and implemented RESTful APIs and integrated PostgreSQL database with JPA/Hibernate for persistent storage of quizzes and questions.",
+        "Enabled inter-service communication using REST templates and centralized request routing through an API Gateway, improving scalability and maintainability.",
+      ],
+      image:
+        "https://spring.io/images/projects/spring-boot-social.png",
+      githubUrl: "https://github.com/shoyub/Quiz-Microservices",
+      technologies: ["Java", "Spring Boot", "Spring Data JPA", "PostgreSQL", "REST APIs", "Eureka", "OpenFeign"],
+    },
   ];
 
   return (
