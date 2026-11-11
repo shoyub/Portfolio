@@ -16,8 +16,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <nav className="container flex items-center justify-between py-4">
-        <div className="text-xl font-bold text-text-primary">
-          Vansh Kapoor
+        <div className="text-xl font-bold" style={{ color: 'hsl(var(--text-primary))' }}>
+          Shoyub Khan
         </div>
 
         {/* Desktop Navigation */}
@@ -26,7 +26,10 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-text-secondary hover:text-text-primary transition-colors"
+              className="transition-colors"
+              style={{ color: 'hsl(var(--text-secondary))' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(var(--text-primary))'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(var(--text-secondary))'}
             >
               {item.name}
             </a>

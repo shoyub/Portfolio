@@ -7,74 +7,69 @@ const Education = () => {
 
   const educationData = [
     {
-      title: 'Postgraduation',
-      institution: 'VIT - Vellore',
-      period: '2021 - 2023',
+      title: 'B.Tech in Computer Science and Engineering',
+      institution: 'Vellore Institute of Technology, Vellore',
+      period: 'Sep 2022 - Present',
+      details: 'CGPA: 8.45',
       icon: GraduationCap
     },
     {
-      title: 'Undergraduation',
-      institution: 'GGSIPU - Delhi',
-      period: '2018 - 2021',
+      title: 'Intermediate (Class 12th)',
+      institution: 'Narayan Junior College, Tirupati',
+      period: 'Aug 2020 - Jul 2022',
+      details: 'Percentage: 91.3%',
       icon: GraduationCap
     },
     {
-      title: 'CBSE (X+XII)',
-      institution: 'SIS - Delhi',
-      period: '2016 - 2018',
+      title: '10th Standard (SSC)',
+      institution: 'Narayana High School, Piler',
+      period: 'Aug 2019 - May 2020',
+      details: 'Percentage: 97.3%',
       icon: GraduationCap
     }
   ];
 
   const experienceData = [
     {
-      title: 'Student Developer Intern',
-      institution: 'Nokia Networks',
-      period: '2022 - Present',
+      title: 'Intern / Developer',
+      institution: 'iCAVE Infotech',
+      period: 'May 2025 - Jun 2025',
+      details: 'Frontend portfolio development',
       icon: Briefcase
     },
     {
-      title: 'CNCF Delhi Co-organizer',
-      institution: 'Cloud Native Computing Foundation',
-      period: '2021 - Present',
-      icon: Briefcase
-    },
-    {
-      title: 'Machine Learning Intern',
-      institution: 'NITD - Delhi',
-      period: '2020',
+      title: 'Senior Core Committee Member',
+      institution: 'Soft Computing Research Society (VIT)',
+      period: '2023 - Present',
+      details: 'AI/ML workshops and events',
       icon: Briefcase
     }
   ];
 
   const certifications = [
     {
-      title: 'Postman Student Expert',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=150&fit=crop'
-    },
-    {
-      title: 'ImagineHack Hackathon',
-      image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=150&fit=crop'
-    },
-    {
-      title: '30 Days of Google Cloud',
-      image: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=200&h=150&fit=crop'
-    },
-    {
-      title: 'Holopin Badges',
-      image: 'https://images.unsplash.com/photo-1618044733300-9472054094ee?w=200&h=150&fit=crop'
-    },
-    {
-      title: 'Solving Real Life Challenges using Java',
+      title: 'Microsoft Certified: Azure AI Fundamentals',
       image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=200&h=150&fit=crop'
     },
     {
-      title: 'Crash Course on Python - Google',
-      image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=200&h=150&fit=crop'
+      title: 'Complete Web Development Course',
+      image: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=200&h=150&fit=crop'
     },
     {
-      title: 'Data Analysis with Python',
+      title: 'Oracle Cloud Infrastructure Foundations',
+      image: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=200&h=150&fit=crop'
+    },
+    {
+      title: 'GeeksforGeeks Problem Solving',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=150&fit=crop'
+    },
+    {
+      title: 'National School Games Cricket',
+      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=200&h=150&fit=crop'
+    },
+    {
+      title: 'Leadership & Event Management',
+      image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=150&fit=crop'
     }
   ];
 
@@ -115,14 +110,15 @@ const Education = () => {
                 return (
                   <div key={index} className="skill-card flex items-center gap-6">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-button-dark rounded-full flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-button-dark-foreground" />
+                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(var(--button-dark))' }}>
+                        <IconComponent className="w-6 h-6" style={{ color: 'hsl(var(--button-dark-foreground))' }} />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-text-primary">{item.title}</h3>
-                      <p className="text-text-secondary">{item.institution}</p>
-                      <p className="text-sm text-text-secondary">{item.period}</p>
+                      <h3 className="text-lg font-bold" style={{ color: 'hsl(var(--text-primary))' }}>{item.title}</h3>
+                      <p style={{ color: 'hsl(var(--text-secondary))' }}>{item.institution}</p>
+                      <p className="text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>{item.period}</p>
+                      {item.details && <p className="text-sm font-medium" style={{ color: 'hsl(var(--text-primary))' }}>{item.details}</p>}
                     </div>
                   </div>
                 );
@@ -135,14 +131,15 @@ const Education = () => {
                 return (
                   <div key={index} className="skill-card flex items-center gap-6">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-button-dark rounded-full flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-button-dark-foreground" />
+                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(var(--button-dark))' }}>
+                        <IconComponent className="w-6 h-6" style={{ color: 'hsl(var(--button-dark-foreground))' }} />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-text-primary">{item.title}</h3>
-                      <p className="text-text-secondary">{item.institution}</p>
-                      <p className="text-sm text-text-secondary">{item.period}</p>
+                      <h3 className="text-lg font-bold" style={{ color: 'hsl(var(--text-primary))' }}>{item.title}</h3>
+                      <p style={{ color: 'hsl(var(--text-secondary))' }}>{item.institution}</p>
+                      <p className="text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>{item.period}</p>
+                      {item.details && <p className="text-sm font-medium" style={{ color: 'hsl(var(--text-primary))' }}>{item.details}</p>}
                     </div>
                   </div>
                 );
@@ -159,14 +156,14 @@ const Education = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {certifications.map((cert, index) => (
               <div key={index} className="skill-card text-center group cursor-pointer">
-                <div className="w-full h-32 bg-background rounded-lg mb-4 overflow-hidden">
+                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden" style={{ backgroundColor: 'hsl(var(--background))' }}>
                   <img 
                     src={cert.image} 
                     alt={cert.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h4 className="text-sm font-medium text-text-primary">{cert.title}</h4>
+                <h4 className="text-sm font-medium" style={{ color: 'hsl(var(--text-primary))' }}>{cert.title}</h4>
               </div>
             ))}
           </div>

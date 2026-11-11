@@ -4,69 +4,37 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: 'Social Media Platform',
+      title: 'Real-Time Chat Application',
       description: [
-        'Inspired from Facebook Social Network.',
-        'Has all the Features of a social media platform like adding/removing friends, posting updates, liking, commenting and even AJAX inspired Chat rooms.',
-        'Project was made with Vanilla JavaScript for FrontEnd and Django was used for BackEnd.'
+        'Designed and developed a scalable chat platform supporting private and group messaging with Socket.IO and Redis.',
+        'Implemented RabbitMQ-based microservices to ensure reliable message queuing, fault tolerance, and smooth scaling.',
+        'Deployed the application on AWS with Docker for containerization, enabling efficient resource management and availability.'
       ],
       image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/Django-social-media-platform',
-      technologies: ['Django', 'JavaScript', 'HTML/CSS']
+      githubUrl: 'https://github.com/shoyub/chat-app',
+      technologies: ['MERN', 'RabbitMQ', 'Socket.IO', 'Redis', 'AWS', 'Docker']
     },
     {
-      title: 'Cryptyz Bitcoin Payment App',
+      title: 'Yumigo: Online Food Ordering App',
       description: [
-        'Cryptyz is a webapp for to manage Bitcoin Transactions.',
-        'User can buy products and will have to pay via their Bitcoin wallet.',
-        'Cryptyz was made using Blockonomics API. For each transaction, a unique payment address & QR are generated. Each user can have their own invoice.'
+        'Built a responsive food ordering app with real-time menu browsing, cart management, and secure Stripe-based payments.',
+        'Integrated Auth0 authentication and role-based access to ensure safe and seamless user onboarding.',
+        'Optimized performance with Zod validation, Cloudinary for media storage, and efficient MongoDB queries.'
       ],
-      image: 'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/Bitcoin-Paytment-App',
-      technologies: ['React', 'Blockonomics API', 'Bitcoin']
+      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop',
+      githubUrl: 'https://github.com/shoyub/yumigo',
+      technologies: ['React.js', 'TypeScript', 'Tailwind', 'Node.js', 'MongoDB']
     },
     {
-      title: 'Wildlife E-commerce Store',
+      title: 'IMDB Top 250 Movie Chatbot',
       description: [
-        'Wildlife Sanctuary Site, started as a ticket booking site, but later got transformed into an e-comm store.',
-        'This webapp not just contains the ticket booking with PayPal API Integration but also has a ministore, individual user cart and even a feature to track the orders.',
-        'The Project also has features to read latest news and Blogs regarding wildlife.'
+        'Developed a conversational chatbot capable of answering queries on IMDB\'s Top 250 movies by rank, rating, or release year.',
+        'Automated data collection with Selenium and Pandas to build a clean dataset for dynamic retrieval.',
+        'Implemented RASA framework for natural language understanding and integrated custom actions for accurate responses.'
       ],
-      image: 'https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/Wildlife-E-commerce-Store/tree/main',
-      technologies: ['Django', 'PayPal API', 'E-commerce']
-    },
-    {
-      title: 'Covid & Pneumonia Detector',
-      description: [
-        'Disease Detection is a platform to detect Covid & Pneumonia.',
-        'FrontEnd Design and API Development was done to provide a better User experience.'
-      ],
-      image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/Covid-Pneumonia-Detector-Deep-Learning',
-      technologies: ['Deep Learning', 'Python', 'Medical AI']
-    },
-    {
-      title: 'React Media Gallery',
-      description: [
-        'React-Media-Gallery is a single page web-application that uses Unsplash and YouTube API to fetch images and videos and display them with a grid based system.',
-        'React-Media-Gallery was made up using the basic usage of states, props, components and other basic React concepts.',
-        'In addition to that ReactPicz also uses axios library to make an ajax call to the APIs and Semantic-ui for Styling.'
-      ],
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/React-Media-Gallery',
-      technologies: ['React', 'Unsplash API', 'YouTube API']
-    },
-    {
-      title: 'Django TodoApp',
-      description: [
-        'A simple Todolist application built using Django Backend framework.',
-        'This Todolist application was made in order to follow CRUD operations paradigm.',
-        'The project also has an authentication feature so that the individual can access their todos.'
-      ],
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-      githubUrl: 'https://github.com/v4nshhh/django-todoapp',
-      technologies: ['Django', 'CRUD', 'Authentication']
+      image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&h=300&fit=crop',
+      githubUrl: 'https://github.com/shoyub/imdb-chatbot',
+      technologies: ['Python', 'RASA', 'Selenium', 'Pandas', 'NLP']
     }
   ];
 
@@ -90,7 +58,7 @@ const Projects = () => {
 
               {/* Project Content */}
               <div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">
+                <h3 className="text-xl font-bold mb-3" style={{ color: 'hsl(var(--text-primary))' }}>
                   {project.title}
                 </h3>
 
@@ -99,7 +67,11 @@ const Projects = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="px-3 py-1 bg-skill-bg text-text-secondary text-sm rounded-full"
+                      className="px-3 py-1 text-sm rounded-full"
+                      style={{ 
+                        backgroundColor: 'hsl(var(--skill-bg))', 
+                        color: 'hsl(var(--text-secondary))' 
+                      }}
                     >
                       {tech}
                     </span>
@@ -107,7 +79,7 @@ const Projects = () => {
                 </div>
 
                 {/* Description */}
-                <div className="text-text-secondary text-sm mb-6 space-y-2">
+                <div className="text-sm mb-6 space-y-2" style={{ color: 'hsl(var(--text-secondary))' }}>
                   {project.description.map((desc, descIndex) => (
                     <p key={descIndex}>• {desc}</p>
                   ))}

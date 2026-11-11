@@ -4,9 +4,9 @@ import aboutImage from '@/assets/about-image.jpg';
 
 const About = () => {
   const stats = [
-    { icon: Award, title: '3 Star', subtitle: 'LeetCoder' },
-    { icon: Briefcase, title: 'Completed', subtitle: '7 Projects' },
-    { icon: Heart, title: "Lovin'", subtitle: 'OpenSource' }
+    { icon: Award, title: '8.45 CGPA', subtitle: 'B.Tech CSE' },
+    { icon: Briefcase, title: 'Completed', subtitle: '3 Projects' },
+    { icon: Heart, title: "Lovin'", subtitle: 'Problem Solving' }
   ];
 
   return (
@@ -38,19 +38,19 @@ const About = () => {
                 return (
                   <div key={index} className="text-center">
                     <div className="flex justify-center mb-2">
-                      <IconComponent className="w-8 h-8 text-icon-color" />
+                      <IconComponent className="w-8 h-8" style={{ color: 'hsl(var(--icon-color))' }} />
                     </div>
-                    <h3 className="font-bold text-text-primary text-lg">{stat.title}</h3>
-                    <p className="text-text-secondary text-sm">{stat.subtitle}</p>
+                    <h3 className="font-bold text-lg" style={{ color: 'hsl(var(--text-primary))' }}>{stat.title}</h3>
+                    <p className="text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>{stat.subtitle}</p>
                   </div>
                 );
               })}
             </div>
 
             {/* Description */}
-            <p className="text-text-secondary leading-relaxed mb-8 text-lg">
-              Coding wizard with a love for the stars ✨ and football ⚽. Guitar virtuoso on the side. 
-              A true team player, bringing tech-savvy and eclectic passions to the table.
+            <p className="leading-relaxed mb-8 text-lg" style={{ color: 'hsl(var(--text-secondary))' }}>
+              A passionate Computer Science student from VIT Vellore with expertise in full-stack development, cloud technologies, and AI/ML. 
+              Experienced in building scalable applications and solving complex problems with modern tech stacks.
             </p>
 
             {/* Resume Button */}

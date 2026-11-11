@@ -29,23 +29,23 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      info: 'vkapoor0112@gmail.com',
-      link: 'mailto:vkapoor0112@gmail.com',
+      info: 'shoyub.khan01@gmail.com',
+      link: 'mailto:shoyub.khan01@gmail.com',
       linkText: 'Write Me'
     },
     {
       icon: MessageSquare,
-      title: 'Twitter',
-      info: '@v4nshhh',
-      link: 'https://twitter.com/v4nshhh',
-      linkText: 'Write Me'
+      title: 'LinkedIn',
+      info: 'Shoyub Khan',
+      link: 'http://www.linkedin.com/in/shoyub-khan',
+      linkText: 'Connect'
     },
     {
       icon: MessageSquare,
-      title: 'Discord',
-      info: 'v4nsh#3688',
-      link: 'https://discord.com/',
-      linkText: 'Write Me'
+      title: 'Phone',
+      info: '+91 7330734080',
+      link: 'tel:+917330734080',
+      linkText: 'Call Me'
     }
   ];
 
@@ -58,22 +58,25 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-16 max-w-5xl mx-auto">
           {/* Left Side - Contact Info */}
           <div>
-            <h3 className="text-2xl font-bold text-text-primary mb-8">Talk To Me</h3>
+            <h3 className="text-2xl font-bold mb-8" style={{ color: 'hsl(var(--text-primary))' }}>Talk To Me</h3>
             <div className="space-y-6">
               {contactMethods.map((method, index) => {
                 const IconComponent = method.icon;
                 return (
                   <div key={index} className="skill-card flex flex-col items-center text-center p-6">
-                    <div className="w-12 h-12 bg-button-dark rounded-full flex items-center justify-center mb-4">
-                      <IconComponent className="w-6 h-6 text-button-dark-foreground" />
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: 'hsl(var(--button-dark))' }}>
+                      <IconComponent className="w-6 h-6" style={{ color: 'hsl(var(--button-dark-foreground))' }} />
                     </div>
-                    <h4 className="font-bold text-text-primary mb-1">{method.title}</h4>
-                    <p className="text-text-secondary mb-3">{method.info}</p>
+                    <h4 className="font-bold mb-1" style={{ color: 'hsl(var(--text-primary))' }}>{method.title}</h4>
+                    <p className="mb-3" style={{ color: 'hsl(var(--text-secondary))' }}>{method.info}</p>
                     <a 
                       href={method.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-text-primary hover:text-text-secondary transition-colors flex items-center gap-1"
+                      className="flex items-center gap-1 transition-colors"
+                      style={{ color: 'hsl(var(--text-primary))' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(var(--text-secondary))'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(var(--text-primary))'}
                     >
                       {method.linkText}
                       <Send className="w-4 h-4" />
@@ -86,10 +89,10 @@ const Contact = () => {
 
           {/* Right Side - Contact Form */}
           <div>
-            <h3 className="text-2xl font-bold text-text-primary mb-8">Write me your thoughts</h3>
+            <h3 className="text-2xl font-bold mb-8" style={{ color: 'hsl(var(--text-primary))' }}>Write me your thoughts</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-text-primary font-medium mb-2">
+                <label htmlFor="name" className="block font-medium mb-2" style={{ color: 'hsl(var(--text-primary))' }}>
                   Name
                 </label>
                 <Input
@@ -105,7 +108,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-text-primary font-medium mb-2">
+                <label htmlFor="email" className="block font-medium mb-2" style={{ color: 'hsl(var(--text-primary))' }}>
                   Mail
                 </label>
                 <Input
@@ -121,7 +124,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-text-primary font-medium mb-2">
+                <label htmlFor="message" className="block font-medium mb-2" style={{ color: 'hsl(var(--text-primary))' }}>
                   Message
                 </label>
                 <Textarea

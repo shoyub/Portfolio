@@ -1,36 +1,36 @@
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: 'Languages',
       skills: [
-        { name: 'ReactJS', level: 'Intermediate' },
-        { name: 'HTML CSS', level: 'Advanced' },
-        { name: 'Javascript', level: 'Advanced' },
-        { name: 'TailwindCSS', level: 'Basic' },
-        { name: 'UI/UX', level: 'Basic' },
-        { name: 'JQuery', level: 'Basic' }
-      ]
-    },
-    {
-      title: 'Backend',
-      skills: [
-        { name: 'Django', level: 'Advanced' },
-        { name: 'NodeJS', level: 'Basic' },
-        { name: 'ExpressJS', level: 'Basic' },
-        { name: 'REST API', level: 'Intermediate' },
-        { name: 'Firebase', level: 'Basic' },
-        { name: 'SQL Mongo', level: 'Intermediate' }
-      ]
-    },
-    {
-      title: 'Other',
-      skills: [
-        { name: 'C++', level: 'Advanced' },
+        { name: 'Java', level: 'Advanced' },
         { name: 'Python', level: 'Intermediate' },
-        { name: 'Git & Github', level: 'Intermediate' },
-        { name: 'Azure', level: 'Basic' },
+        { name: 'JavaScript', level: 'Advanced' },
+        { name: 'SQL/PL-SQL', level: 'Advanced' },
+        { name: 'HTML/CSS', level: 'Advanced' },
+        { name: 'TypeScript', level: 'Intermediate' }
+      ]
+    },
+    {
+      title: 'Frameworks & Technologies',
+      skills: [
+        { name: 'React.js', level: 'Advanced' },
+        { name: 'Next.js', level: 'Intermediate' },
+        { name: 'Node.js', level: 'Intermediate' },
+        { name: 'Express.js', level: 'Intermediate' },
+        { name: 'MongoDB', level: 'Intermediate' },
+        { name: 'MySQL', level: 'Advanced' }
+      ]
+    },
+    {
+      title: 'Cloud & Tools',
+      skills: [
+        { name: 'AWS', level: 'Intermediate' },
         { name: 'Docker', level: 'Intermediate' },
-        { name: 'Bash', level: 'Basic' }
+        { name: 'Git/GitHub', level: 'Advanced' },
+        { name: 'Selenium', level: 'Intermediate' },
+        { name: 'RASA', level: 'Basic' },
+        { name: 'Pandas', level: 'Intermediate' }
       ]
     }
   ];
@@ -57,17 +57,17 @@ const Skills = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="skill-card">
-              <h3 className="text-xl font-bold text-text-primary mb-6 text-center">
+              <h3 className="text-xl font-bold text-center mb-6" style={{ color: 'hsl(var(--text-primary))' }}>
                 {category.title}
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium text-text-primary">{skill.name}</span>
-                      <span className="text-sm text-text-secondary">{skill.level}</span>
+                      <span className="font-medium" style={{ color: 'hsl(var(--text-primary))' }}>{skill.name}</span>
+                      <span className="text-sm" style={{ color: 'hsl(var(--text-secondary))' }}>{skill.level}</span>
                     </div>
-                    <div className="w-full bg-border rounded-full h-2">
+                    <div className="w-full rounded-full h-2" style={{ backgroundColor: 'hsl(var(--border))' }}>
                       <div 
                         className={`${getLevelColor(skill.level)} h-2 rounded-full transition-all duration-300`}
                         style={{ 

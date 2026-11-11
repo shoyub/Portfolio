@@ -10,17 +10,7 @@ const Hero = () => {
           {/* Left Side - Social Icons */}
           <div className="flex lg:flex-col items-center gap-6">
             <a 
-              href="https://leetcode.com/v4nshh/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.518 2.153 7.758-.025l.039-.038c2.248-2.165 2.248-5.68 0-7.845l-4.277-4.193a1.374 1.374 0 0 0-1.961.025 1.375 1.375 0 0 0 .025 1.961l4.277 4.193c1.351 1.326 1.351 3.474 0 4.8-.675.663-1.567.995-2.458.995s-1.783-.332-2.458-.995L8.583 13.948a1.374 1.374 0 0 0-1.961-.025 1.375 1.375 0 0 0 .025 1.961l3.854 3.78a3.897 3.897 0 0 0 5.542-.025 3.897 3.897 0 0 0 0-5.542l-3.854-3.78L7.812 5.063a3.897 3.897 0 0 0-5.542 0 3.897 3.897 0 0 0 0 5.542L6.547 14.84l.039.038c.674.663 1.567.995 2.458.995s1.784-.332 2.458-.995a1.374 1.374 0 0 0 0-1.961 1.375 1.375 0 0 0-1.961 0c-.675.663-1.567.995-2.458.995s-1.783-.332-2.458-.995L.346 8.675a1.374 1.374 0 0 0-1.961 0 1.375 1.375 0 0 0 0 1.961l4.277 4.193c2.248 2.165 5.518 2.153 7.758-.025l.039-.038c2.248-2.165 2.248-5.68 0-7.845L6.182 2.728a1.374 1.374 0 0 0-1.961-.025 1.375 1.375 0 0 0 .025 1.961l4.277 4.193c1.351 1.326 1.351 3.474 0 4.8a1.374 1.374 0 0 0 0 1.961 1.375 1.375 0 0 0 1.961 0c2.248-2.178 2.248-5.68 0-7.845L6.207 2.54A3.897 3.897 0 0 1 13.483 0z"/>
-              </svg>
-            </a>
-            <a 
-              href="https://github.com/kapoor-codes" 
+              href="https://github.com/shoyub" 
               target="_blank" 
               rel="noopener noreferrer"
               className="social-icon"
@@ -28,34 +18,36 @@ const Hero = () => {
               <Github className="w-6 h-6" />
             </a>
             <a 
-              href="https://twitter.com/kapoor_twts" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <Twitter className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/vansh-kapoor/" 
+              href="http://www.linkedin.com/in/shoyub-khan" 
               target="_blank" 
               rel="noopener noreferrer"
               className="social-icon"
             >
               <Linkedin className="w-6 h-6" />
             </a>
+            <a 
+              href="https://portfolio-git-main-shoyubs-projects.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </a>
           </div>
 
           {/* Center - Content */}
           <div className="flex-1 text-center lg:text-left max-w-xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-4">
-              Vansh Kapoor 
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: 'hsl(var(--text-primary))' }}>
+              Shoyub Khan 
               <span className="text-3xl md:text-4xl lg:text-5xl">👋</span>
             </h1>
-            <h2 className="text-xl md:text-2xl text-text-secondary mb-6 border-b border-border pb-2 inline-block">
-              FullStack Software Developer
+            <h2 className="text-xl md:text-2xl mb-6 border-b pb-2 inline-block" style={{ color: 'hsl(var(--text-secondary))', borderColor: 'hsl(var(--border))' }}>
+              Computer Science Student & Full Stack Developer
             </h2>
-            <p className="text-text-secondary mb-8 text-lg leading-relaxed">
-              A Fullstack programming wizard, bending code to my will and conjuring magic in the digital realm.
+            <p className="mb-8 text-lg leading-relaxed" style={{ color: 'hsl(var(--text-secondary))' }}>
+              Computer Science student skilled in SQL, Java, and web technologies with strong problem-solving, communication, and teamwork abilities. Eager to apply knowledge in practical, impactful solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button className="btn-primary">
@@ -69,10 +61,10 @@ const Hero = () => {
 
           {/* Right Side - Profile Image */}
           <div className="flex-shrink-0">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-border shadow-lg">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 shadow-lg" style={{ borderColor: 'hsl(var(--border))' }}>
               <img 
                 src={profileImage} 
-                alt="Vansh Kapoor" 
+                alt="Shoyub Khan" 
                 className="w-full h-full object-cover"
               />
             </div>
