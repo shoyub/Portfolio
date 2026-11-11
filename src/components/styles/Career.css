@@ -5,11 +5,13 @@
   place-items: center;
   justify-content: center;
   position: relative;
+  z-index: 15;
+  background-color: var(--backgroundColor);
   opacity: 1;
   height: auto;
   margin: auto;
-  margin-bottom: 250px;
-  padding: 120px 0px;
+  margin-bottom: 20px;
+  padding: 60px 0px;
 }
 
 .career-section h2 {
@@ -22,11 +24,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  margin-top: 50px;
-  margin-bottom: 90px;
+  margin-top: 20px;
+  margin-bottom: 70px;
 }
 
-.career-section h2>span {
+.career-section h2 > span {
   font-family: "Geist", sans-serif;
   font-weight: 300;
 }
@@ -91,11 +93,13 @@
   transform: translateX(-50%);
   width: 3px;
   height: 100%;
-  background-image: linear-gradient(to top,
-      #aa42ff 20%,
-      var(--accentColor) 50%,
-      transparent 95%);
-  max-height: 0%;
+  background-image: linear-gradient(
+    to top,
+    #aa42ff 20%,
+    var(--accentColor) 50%,
+    transparent 95%
+  );
+  max-height: 100%;
 }
 
 .career-dot {
@@ -113,7 +117,6 @@
 }
 
 @keyframes timeline {
-
   10%,
   20%,
   50%,
@@ -206,8 +209,7 @@
 
 @media only screen and (max-width: 1025px) {
   .career-section {
-    padding: 70px 0px;
-    padding-top: 100px;
+    padding: 50px 0px;
     margin-top: 0px;
     margin-bottom: 0;
   }
@@ -217,7 +219,7 @@
   .career-info-box {
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
 
   .career-info-in,
@@ -262,9 +264,8 @@
   }
 
   .career-section {
-    padding-top: 90px;
+    padding-top: 50px;
     margin-top: 0px;
-
     align-items: start;
     place-items: inherit;
     justify-content: left;

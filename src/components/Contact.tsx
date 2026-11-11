@@ -2,11 +2,6 @@ import { useState } from "react";
 import { MdArrowOutward, MdCopyright, MdSend } from "react-icons/md";
 import "./styles/Contact.css";
 import { config } from "../config";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,34 +10,6 @@ const Contact = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    const contactTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".contact-section",
-        start: "top 80%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-      },
-    });
-
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-    );
-
-    contactTimeline.fromTo(
-      ".contact-card, .contact-form-container",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
-      "-=0.4"
-    );
-
-    return () => {
-      contactTimeline.kill();
-    };
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

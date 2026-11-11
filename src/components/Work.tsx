@@ -10,31 +10,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
   useEffect(() => {
-    // Disable pinning on mobile to allow scrolling
     if (window.innerWidth <= 768) return;
 
-    let translateX: number = 0;
-
-    function setTranslateX() {
+    function getTranslateX() {
       const box = document.getElementsByClassName("work-box");
-      if (box.length === 0) return;
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
+      const workContainer = document.querySelector(".work-container");
+      if (box.length === 0 || !workContainer || !box[0].parentElement) return 1200;
+      const rectLeft = workContainer.getBoundingClientRect().left;
       const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = Math.max(500, rect.width * box.length - (rectLeft + parentWidth) + padding);
+      const parentWidth = box[0].parentElement.getBoundingClientRect().width;
+      const padding = parseInt(window.getComputedStyle(box[0]).padding) / 2 || 0;
+      return Math.max(
+        600,
+        rect.width * box.length - (rectLeft + parentWidth) + padding
+      );
     }
 
-    setTranslateX();
+    ScrollTrigger.getById("work")?.kill();
 
-    let timeline = gsap.timeline({
+    const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".work-section",
         start: "top top",
-        end: `+=${translateX}`,
+        end: () => `+=${getTranslateX()}`,
         scrub: 1,
         pin: true,
         pinSpacing: true,
@@ -45,17 +43,14 @@ const Work = () => {
     });
 
     timeline.to(".work-flex", {
-      x: -translateX,
+      x: () => -getTranslateX(),
       ease: "none",
     });
 
-    // Refresh ScrollTrigger after layout settles
     const timer = setTimeout(() => {
-      setTranslateX();
       ScrollTrigger.refresh();
-    }, 400);
+    }, 300);
 
-    // Clean up
     return () => {
       clearTimeout(timer);
       timeline.kill();
@@ -70,7 +65,7 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {config.projects.slice(0, 6).map((project, index) => (
+          {config.projects.map((project, index) => (
             <div className="work-box" key={project.id}>
               <div className="work-info">
                 <div className="work-title">
@@ -84,7 +79,11 @@ const Work = () => {
                 <h4>Tools and features</h4>
                 <p>{project.technologies}</p>
               </div>
-              <WorkImage image={project.image} alt={project.title} link={project.link} />
+              <WorkImage
+                image={project.image}
+                alt={project.title}
+                link={project.link}
+              />
             </div>
           ))}
           {/* See All Works Button */}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d081d"/>
+      <stop offset="50%" stop-color="#191038"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c2a4ff"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" rx="20" fill="url(#bg1)"/>
+  <circle cx="680" cy="90" r="160" fill="#aa42ff" opacity="0.14"/>
+  <circle cx="120" cy="360" r="180" fill="#3b82f6" opacity="0.12"/>
+  <rect x="40" y="36" width="720" height="378" rx="18" fill="rgba(255,255,255,0.03)" stroke="rgba(194,164,255,0.28)" stroke-width="1.5"/>
+  <text x="400" y="105" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="38" font-weight="800" letter-spacing="1">RETAILCO WMS</text>
+  <text x="400" y="140" text-anchor="middle" fill="#c2a4ff" font-family="sans-serif" font-size="17" font-weight="500">Full-Stack Warehouse &amp; Fulfilment Management System</text>
+  <rect x="110" y="175" width="175" height="125" rx="14" fill="rgba(194,164,255,0.08)" stroke="#c2a4ff" stroke-width="1.5"/>
+  <text x="197" y="225" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Inventory</text>
+  <text x="197" y="252" text-anchor="middle" fill="#a5b4fc" font-family="sans-serif" font-size="13">Real-Time Stock</text>
+  <text x="197" y="275" text-anchor="middle" fill="#c2a4ff" font-family="sans-serif" font-size="12">SQLAlchemy 2.0</text>
+  <rect x="312" y="175" width="175" height="125" rx="14" fill="rgba(96,165,250,0.09)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="400" y="225" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Order Engine</text>
+  <text x="400" y="252" text-anchor="middle" fill="#93c5fd" font-family="sans-serif" font-size="13">FastAPI + Pydantic</text>
+  <text x="400" y="275" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="12">REST Micro-APIs</text>
+  <rect x="515" y="175" width="175" height="125" rx="14" fill="rgba(167,139,250,0.09)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="602" y="225" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Fulfilment UI</text>
+  <text x="602" y="252" text-anchor="middle" fill="#c4b5fd" font-family="sans-serif" font-size="13">React 18 + Vite</text>
+  <text x="602" y="275" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="12">Pytest &amp; GitLab CI</text>
+  <rect x="130" y="335" width="125" height="36" rx="18" fill="#ffffff"/>
+  <text x="192" y="358" text-anchor="middle" fill="#0d081d" font-family="sans-serif" font-size="13" font-weight="700">FastAPI</text>
+  <rect x="270" y="335" width="125" height="36" rx="18" fill="#ffffff"/>
+  <text x="332" y="358" text-anchor="middle" fill="#0d081d" font-family="sans-serif" font-size="13" font-weight="700">React 18</text>
+  <rect x="410" y="335" width="125" height="36" rx="18" fill="#ffffff"/>
+  <text x="472" y="358" text-anchor="middle" fill="#0d081d" font-family="sans-serif" font-size="13" font-weight="700">SQLAlchemy</text>
+  <rect x="550" y="335" width="125" height="36" rx="18" fill="url(#accent1)"/>
+  <text x="612" y="358" text-anchor="middle" fill="#0d081d" font-family="sans-serif" font-size="13" font-weight="700">Spec-Driven</text>
+</svg>

@@ -14,7 +14,7 @@ const setLighting = (scene: THREE.Scene) => {
 
   // Backlight for rim effect
   const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 1.5);
-  directionalLight.position.set(-0.47, 5, -5);
+  directionalLight.position.set(-0.47, -0.32, -1);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
@@ -33,8 +33,10 @@ const setLighting = (scene: THREE.Scene) => {
     .load("char_enviorment.hdr", function (texture) {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
-      scene.environmentIntensity = 0.8;
-      scene.environmentRotation.set(5.76, 85.85, 1);
+      scene.environmentIntensity = 0.72;
+      if (scene.environmentRotation) {
+        scene.environmentRotation.set(5.76, 85.85, 1);
+      }
     });
 
   function setPointLight(screenLight: any) {
@@ -44,7 +46,7 @@ const setLighting = (scene: THREE.Scene) => {
       pointLight.intensity = 0;
     }
   }
-  const duration = 2;
+  const duration = 1.5;
   const ease = "power2.inOut";
   function turnOnLights() {
     gsap.to(frontLight, {
@@ -58,20 +60,20 @@ const setLighting = (scene: THREE.Scene) => {
       ease: ease,
     });
     gsap.to(scene, {
-      environmentIntensity: 0.8,
+      environmentIntensity: 0.72,
       duration: duration,
       ease: ease,
     });
     gsap.to(directionalLight, {
-      intensity: 1.8,
+      intensity: 1.5,
       duration: duration,
       ease: ease,
     });
     gsap.to(".character-rim", {
       y: "55%",
       opacity: 1,
-      delay: 0.2,
-      duration: 2,
+      delay: 0.1,
+      duration: 1.5,
     });
   }
 

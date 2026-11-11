@@ -134,21 +134,21 @@ export const config = {
       title: "Oracle Cloud Application Foundation Certified Implementation Specialist",
       issuer: "Oracle",
       date: "August 2025",
-      image: "https://images.credly.com/images/27db49f3-8bae-4314-8a84-884935b569db/linkedin_thumb_50_Oracle_Cloud_Infrastructure.png",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
       link: "https://drive.google.com/file/d/19aESWv5aAo970Bei68JTwFRx21W58-qj/view?usp=drivesdk"
     },
     {
       title: "Microsoft Certified: Azure AI Fundamentals",
       issuer: "Microsoft",
       date: "August 2024",
-      image: "https://i0.wp.com/thecrm.ninja/wp-content/uploads/2020/10/ai.png?fit=2087%2C1268&ssl=1",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
       link: "https://drive.google.com/file/d/1dHXZJcQt8qB1Rfo66_UTjWWDZ2qwVEoK/view?usp=drivesdk"
     },
     {
       title: "Postman API Fundamentals Student Expert",
       issuer: "Postman",
       date: "Certified",
-      image: "https://cc.sj-cdn.net/instructor/3d8458f2k85sh-postman/courses/1a8b8cdxvqjxq/promo-image.1676069333.png",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
       link: "https://drive.google.com/file/d/1EedLTtLua6VBVIu2IhkLxvkfbsNUNVyj/view?usp=drivesdk"
     }
   ],
@@ -158,7 +158,7 @@ export const config = {
       title: "RetailCo Warehouse & Fulfilment Management System",
       category: "Full-Stack / Supply Chain",
       technologies: "Python, FastAPI, React 18, Vite, SQLAlchemy 2.0, Pydantic v2, SQLite, Pytest, GitLab CI",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-1.svg",
       description:
         "Developed a full-stack warehouse and fulfilment management application covering inventory, orders, shipments, and supply chain workflows with service-layer architecture and Spec-Driven Development.",
       link: "https://github.com/shoyub"
@@ -168,7 +168,7 @@ export const config = {
       title: "Real-Time Chat Application",
       category: "Full-Stack / Distributed Systems",
       technologies: "MongoDB, Express.js, React.js, Node.js, Socket.IO, Redis, RabbitMQ, Docker",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-2.svg",
       description:
         "Real-time private & group messaging platform with Socket.IO, multi-instance synchronization using Redis Pub/Sub, asynchronous offline notifications with RabbitMQ, and Docker containerization.",
       link: "https://github.com/shoyub/real-time-chat"
@@ -178,7 +178,7 @@ export const config = {
       title: "Quiz Microservices Platform",
       category: "Microservices Architecture",
       technologies: "Java, Spring Boot, REST APIs, PostgreSQL, JPA/Hibernate, Netflix Eureka, OpenFeign",
-      image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-3.svg",
       description:
         "Distributed microservices backend featuring independent API Gateway, Quiz Service, Question Service, Netflix Eureka discovery registry, OpenFeign IPC, and PostgreSQL persistence.",
       link: "https://github.com/shoyub/Quiz-Microservices"
@@ -188,7 +188,7 @@ export const config = {
       title: "Phishing Detection System",
       category: "Cyber Security / ML",
       technologies: "Python, FastAPI, Machine Learning, MongoDB, Pandas, Scikit-learn",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-4.svg",
       description:
         "Hybrid phishing detection platform combining ML models and rule-based scoring trained on 11,000+ samples, paired with a high-throughput FastAPI REST API service.",
       link: "https://github.com/shoyub/Network-Security"
@@ -198,7 +198,7 @@ export const config = {
       title: "AI Search Chatbot with LangChain",
       category: "GenAI / Agentic RAG",
       technologies: "Python, LangChain, Groq, Llama 3, RAG, Streamlit",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-5.svg",
       description:
         "Agentic AI search assistant powered by Llama 3 via Groq and LangChain agents with multi-tool dynamic RAG across Wikipedia, Arxiv, and DuckDuckGo.",
       link: "https://github.com/shoyub/search-engine"
@@ -208,7 +208,7 @@ export const config = {
       title: "Next Word Prediction System",
       category: "Deep Learning / NLP",
       technologies: "Python, TensorFlow, LSTM, GRU, NLP, Streamlit",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-6.svg",
       description:
         "Sequential NLP deep learning engine using recurrent neural networks (LSTM & GRU) trained on classical texts with real-time Streamlit comparison interface.",
       link: "https://github.com/shoyub/next-word-"
@@ -218,10 +218,10 @@ export const config = {
       title: "Lingo: Interactive Language Learning Platform",
       category: "Full-Stack Web App",
       technologies: "Next.js 14, React, TypeScript, Tailwind CSS, PostgreSQL, Drizzle ORM, Stripe",
-      image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80",
+      image: "/images/project-7.svg",
       description:
         "Interactive gamified language learning web platform featuring bite-sized interactive lessons, dynamic audio pronunciation, heart/quest systems, and Stripe payments.",
-      link: "https://github.com/shoyub"
+      link: "https://github.com/shoyub/lingo"
     }
   ],
   contact: {

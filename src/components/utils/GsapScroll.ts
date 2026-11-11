@@ -1,5 +1,8 @@
 import * as THREE from "three";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
@@ -9,8 +12,14 @@ export function setCharTimeline(
   setInterval(() => {
     intensity = Math.random();
   }, 200);
+
+  ScrollTrigger.getById("char-tl1")?.kill();
+  ScrollTrigger.getById("char-tl2")?.kill();
+  ScrollTrigger.getById("char-tl3")?.kill();
+
   const tl1 = gsap.timeline({
     scrollTrigger: {
+      id: "char-tl1",
       trigger: ".landing-section",
       start: "top top",
       end: "bottom top",
@@ -20,6 +29,7 @@ export function setCharTimeline(
   });
   const tl2 = gsap.timeline({
     scrollTrigger: {
+      id: "char-tl2",
       trigger: ".about-section",
       start: "center 55%",
       end: "bottom top",
@@ -29,6 +39,7 @@ export function setCharTimeline(
   });
   const tl3 = gsap.timeline({
     scrollTrigger: {
+      id: "char-tl3",
       trigger: ".whatIDO",
       start: "top top",
       end: "bottom top",
@@ -36,25 +47,27 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
-  let screenLight: any = null, monitor: any = null;
-  character?.traverse((object: any) => {
-    if (object.name === "Plane.004" || object.name === "Plane004") {
-      monitor = object;
-      if (object.material) {
-        object.material.transparent = true;
-        object.material.opacity = 0;
-        object.material.color?.set("#FFFFFF");
-      }
-      object.children?.forEach((child: any) => {
+
+  let screenLight: any = null;
+  let monitor: any = null;
+  const monitorMaterials: any[] = [];
+
+  character?.children.forEach((object: any) => {
+    if (object.name === "Plane004" || object.name === "Plane.004") {
+      object.children.forEach((child: any) => {
         if (child.material) {
           child.material.transparent = true;
           child.material.opacity = 0;
+          monitorMaterials.push(child.material);
           if (child.material.name === "Material.027") {
             monitor = child;
             child.material.color?.set("#FFFFFF");
           }
         }
       });
+      if (!monitor && object.children.length > 0) {
+        monitor = object.children[0];
+      }
     }
     if (object.name === "screenlight") {
       if (object.material) {
@@ -70,7 +83,11 @@ export function setCharTimeline(
       screenLight = object;
     }
   });
-  let neckBone = character?.getObjectByName("spine.005") || character?.getObjectByName("spine005");
+
+  let neckBone =
+    character?.getObjectByName("spine005") ||
+    character?.getObjectByName("spine.005");
+
   if (window.innerWidth > 768) {
     if (character) {
       tl1
@@ -79,85 +96,69 @@ export function setCharTimeline(
         .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
         .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
         .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
-        .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
+        .fromTo(".about-me", { y: "-30%" }, { y: "0%" }, 0);
 
       tl2
         .to(
           camera.position,
-          { z: 75, y: 8.4, duration: 6, delay: 2, ease: "power3.inOut" },
+          { z: 75, y: 8.4, duration: 6, delay: 1.5, ease: "power3.inOut" },
           0
         )
-        .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 4.5, duration: 1.5 }, 0)
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
-          { pointerEvents: "none", x: "-12%", delay: 2, duration: 5 },
+          { pointerEvents: "none", x: "-12%", delay: 1.5, duration: 5 },
           0
         )
-        .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0);
+        .to(character.rotation, { y: 0.92, x: 0.12, delay: 2, duration: 3 }, 0);
 
       if (neckBone) {
-        tl2.to(neckBone.rotation, { x: 0.6, delay: 2, duration: 3 }, 0);
+        tl2.to(neckBone.rotation, { x: 0.6, delay: 1.5, duration: 3 }, 0);
       }
-      if (monitor?.material) {
-        tl2.to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0);
+      if (monitorMaterials.length > 0) {
+        tl2.to(monitorMaterials, { opacity: 1, duration: 0.8, delay: 2.5 }, 0);
+      }
+      if (monitor) {
         tl2.fromTo(
           monitor.position,
           { y: -10, z: 2 },
-          { y: 0, z: 0, delay: 1.5, duration: 3 },
+          { y: 0, z: 0, delay: 1.2, duration: 3 },
           0
         );
       }
       if (screenLight?.material) {
-        tl2.to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0);
+        tl2.to(screenLight.material, { opacity: 1, duration: 0.8, delay: 3.5 }, 0);
       }
 
-      tl2
-        .fromTo(
-          ".what-box-in",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1.5, delay: 3.5 },
-          0
-        )
-        .fromTo(
-          ".character-rim",
-          { opacity: 1, scaleX: 1.4 },
-          { opacity: 0, scale: 0, y: "-70%", duration: 5, delay: 2 },
-          0.3
-        );
+      tl2.fromTo(
+        ".character-rim",
+        { opacity: 1, scaleX: 1.4 },
+        { opacity: 0, scale: 0, y: "-70%", duration: 5, delay: 1.5 },
+        0.3
+      );
 
       tl3
         .fromTo(
           ".character-model",
-          { y: "0%", autoAlpha: 1 },
-          { y: "-100%", autoAlpha: 0, duration: 4, ease: "none", delay: 1 },
+          { y: "0%" },
+          { y: "-120%", duration: 4, ease: "none", delay: 0.5 },
           0
         )
-        .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
-        .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
-    }
-  } else {
-    if (character) {
-      const tM2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".what-box-in",
-          start: "top 70%",
-          end: "bottom top",
-        },
-      });
-      tM2.to(".what-box-in", { opacity: 1, duration: 0.5, delay: 0 }, 0);
+        .to(character.rotation, { x: -0.04, duration: 2, delay: 0.5 }, 0);
     }
   }
 }
 
 export function setAllTimeline() {
+  ScrollTrigger.getById("career-timeline")?.kill();
+
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
+      id: "career-timeline",
       trigger: ".career-section",
-      start: "top 70%",
-      end: "bottom 30%",
-      scrub: 1.5,
+      start: "top 75%",
+      end: "bottom 35%",
+      scrub: 1,
       invalidateOnRefresh: true,
     },
   });
@@ -168,17 +169,10 @@ export function setAllTimeline() {
       { maxHeight: "100%", duration: 1, ease: "none" },
       0
     )
-
     .fromTo(
       ".career-timeline",
-      { opacity: 0 },
+      { opacity: 0.3 },
       { opacity: 1, duration: 0.2 },
-      0
-    )
-    .fromTo(
-      ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
       0
     )
     .fromTo(
@@ -191,20 +185,4 @@ export function setAllTimeline() {
       },
       0
     );
-
-  if (window.innerWidth > 768) {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: "15%", duration: 0.5, delay: 0.2 },
-      0
-    );
-  } else {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: 0, duration: 0.5, delay: 0.2 },
-      0
-    );
-  }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -10,64 +10,85 @@ gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
     // Initialize Lenis smooth scroll
     lenis = new Lenis({
-      duration: 1.7,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.7,
+      wheelMultiplier: 1.5,
       touchMultiplier: 2,
       infinite: false,
     });
 
-    // Start paused
-    lenis.stop();
+    lenis.on("scroll", ({ scroll }: { scroll: number }) => {
+      setIsScrolled(scroll > 30);
+      ScrollTrigger.update();
+    });
 
-    // Handle smooth scroll animation frame
+    document.body.style.overflowY = "auto";
+    lenis.start();
+
+    let rafId: number;
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
-    // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
+    // Handle navigation links only for anchor hash sections
+    let links = document.querySelectorAll(".header ul a[data-href]");
+    const clickHandlers: Array<{ el: HTMLAnchorElement; fn: (e: Event) => void }> = [];
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
+      const fn = (e: Event) => {
+        let section = element.getAttribute("data-href");
+        if (section) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
+          const target = document.querySelector(section) as HTMLElement;
+          if (target) {
+            if (lenis && window.innerWidth > 768) {
               lenis.scrollTo(target, {
-                offset: 0,
-                duration: 1.5,
+                offset: -40,
+                duration: 1.4,
               });
+            } else {
+              target.scrollIntoView({ behavior: "smooth" });
             }
           }
         }
-      });
+      };
+      element.addEventListener("click", fn);
+      clickHandlers.push({ el: element, fn });
     });
 
-    // Handle resize
-    window.addEventListener("resize", () => {
+    const onResize = () => {
       lenis?.resize();
-    });
+    };
+    window.addEventListener("resize", onResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", onResize);
+      clickHandlers.forEach(({ el, fn }) => el.removeEventListener("click", fn));
       lenis?.destroy();
     };
   }, []);
 
   return (
     <>
-      <div className="header">
+      <div className={`header ${isScrolled ? "header-scrolled" : ""}`}>
         <div className="navbar-left">
           <a href="/#" className="navbar-title" data-cursor="disable">
             SK
