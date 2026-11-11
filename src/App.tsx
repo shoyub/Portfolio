@@ -16,6 +16,16 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route
+            path="/resume"
+            element={
+              <iframe
+                src="/resume.pdf"
+                title="Resume"
+                style={{ width: "100%", height: "100vh", border: "none" }}
+              />
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

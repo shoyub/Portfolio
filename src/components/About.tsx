@@ -55,7 +55,14 @@ const About = () => {
 
             {/* Resume Button */}
             <Button className="btn-primary">
-              Download Resume
+              <a 
+                href="https://drive.google.com/file/d/1YuT1dA5vIpEQNwrRrLW8-NhMFxDgX4zv/view?usp=drivesdk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                Download Resume
+              </a>
             </Button>
           </div>
         </div>
