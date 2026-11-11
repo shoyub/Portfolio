@@ -62,7 +62,12 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
 }
@@ -108,7 +113,7 @@ All colors MUST be HSL.
     @apply w-6 h-6 transition-colors cursor-pointer;
     color: hsl(var(--icon-color));
   }
-  
+
   .social-icon:hover {
     color: hsl(var(--text-primary));
   }
@@ -123,14 +128,43 @@ All colors MUST be HSL.
     @apply px-6 py-3 rounded-lg font-medium hover:bg-opacity-50 transition-colors;
     border: 1px solid hsl(var(--border));
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  /* 🔹 Loader animation */
+  .loader {
+    width: fit-content;
+    font-size: 40px;
+    font-family: system-ui, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0000;
+    -webkit-text-stroke: 1px #000;
+    background: conic-gradient(from -135deg at 100% 50%, #000 90deg, #0000 0)
+        text no-repeat,
+      conic-gradient(from -135deg at 1lh 50%, #0000 90deg, #000 0) text
+        no-repeat;
+    animation: l6 2s linear infinite;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .loader:before {
+    content: "Loading";
+  }
+
+  @keyframes l6 {
+    0% {
+      background-size: 0 200%;
+      background-position: 0 0, 100% 0;
+    }
+    50% {
+      background-size: calc(60% + 0.5lh) 200%;
+      background-position: 0 0, 100% 0;
+    }
+    50.01% {
+      background-size: calc(60% + 0.5lh) 200%;
+      background-position: 0 100%, 100% 100%;
+    }
+    100% {
+      background-size: 0 200%;
+      background-position: 0 100%, 100% 100%;
+    }
   }
 }
