@@ -4,7 +4,7 @@ import aboutImage from "@/assets/about-image.jpg";
 
 const About = () => {
   const stats = [
-    { icon: Award, title: "8.48 CGPA", subtitle: "B.Tech CSE" },
+    { icon: Award, title: "8.5 CGPA", subtitle: "B.Tech CSE" },
     { icon: Briefcase, title: "Completed", subtitle: "3 Projects" },
     { icon: Heart, title: "Lovin'", subtitle: "Problem Solving" },
   ];

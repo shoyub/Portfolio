@@ -27,7 +27,7 @@ const Education = () => {
       title: "B.Tech in Computer Science and Engineering",
       institution: "Vellore Institute of Technology, Vellore",
       period: "Sep 2022 - Present",
-      details: "CGPA: 8.48",
+      details: "CGPA: 8.5",
       icon: GraduationCap,
     },
     {
