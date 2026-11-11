@@ -23,6 +23,24 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Lingo: Interactive Language Learning Platform",
+      description: [
+        "Built a Duolingo-style platform supporting Indian and foreign languages with gamified lessons, quizzes, and progress tracking.",
+        "Integrated Clerk authentication and Stripe payments for secure user onboarding and subscription management.",
+        "Utilized Drizzle ORM with Neon PostgreSQL for efficient database operations and seamless scalability",
+      ],
+      image:
+        "https://play-lh.googleusercontent.com/tw_coGKgk1K_zO-Ypf9zBKV1s-KT3dYN1MIUxIqtnbfmON5x_YmuoAr31gE4oSfJHNtA-aStTd-qe9R8S6NVyA",
+      githubUrl: "https://github.com/shoyub/lingo",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Stripe",
+      ],
+    },
+    {
       title: "Real-Time Chat Application",
       description: [
         "Built a real-time chat application with WebSocket integration",
