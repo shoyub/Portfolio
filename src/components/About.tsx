@@ -79,25 +79,21 @@ const About = () => {
 
             {/* Resume Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Button className="btn-primary">
-                <a
-                  href="/java_resume.pdf"
-                  download
-                  className="flex items-center gap-2"
-                >
-                  Download Java Resume
-                </a>
-              </Button>
+              <a
+                href="/java_resume.pdf"
+                download="Shoyub_Java_Resume.pdf"
+                className="btn-primary inline-flex items-center justify-center"
+              >
+                Download Java Resume
+              </a>
 
-              <Button className="btn-primary">
-                <a
-                  href="/python_resume.pdf"
-                  download
-                  className="flex items-center gap-2"
-                >
-                  Download Python Resume
-                </a>
-              </Button>
+              <a
+                href="/python_resume.pdf"
+                download="Shoyub_Python_Resume.pdf"
+                className="btn-primary inline-flex items-center justify-center"
+              >
+                Download Python Resume
+              </a>
             </div>
           </div>
         </div>
