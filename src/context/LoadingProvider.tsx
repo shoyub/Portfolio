@@ -15,38 +15,48 @@ interface LoadingType {
 
 export const LoadingContext = createContext<LoadingType | null>(null);
 
+let hasCompletedInitialLoad = false;
+
+export const hasLoadedBefore = () => hasCompletedInitialLoad;
+
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [isLoading, setIsLoading] = useState(() => {
-    // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
+  const [isLoading, setIsLoadingState] = useState(() => {
+    if (window.innerWidth <= 768 || hasCompletedInitialLoad) return false;
     return true;
   });
   const [loading, setLoading] = useState(0);
+
+  const setIsLoading = (state: boolean) => {
+    if (!state) {
+      hasCompletedInitialLoad = true;
+    }
+    setIsLoadingState(state);
+  };
 
   const value = {
     isLoading,
     setIsLoading,
     setLoading,
   };
+
   useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 768 || hasCompletedInitialLoad) {
       import("../components/utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {
             module.initialFX();
-          }, 100);
+          }, 50);
         }
       });
     }
   }, []);
 
-  useEffect(() => {}, [loading]);
-
   return (
     <LoadingContext.Provider value={value as LoadingType}>
       {isLoading && <Loading percent={loading} />}
-      <main className="main-body">{children}</main>
+      <main className={`main-body ${hasCompletedInitialLoad ? "main-active" : ""}`}>
+        {children}
+      </main>
     </LoadingContext.Provider>
   );
 };

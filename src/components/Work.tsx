@@ -2,64 +2,70 @@ import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { config } from "../config";
 import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth <= 768 || !sectionRef.current) return;
+
+    const el = sectionRef.current;
 
     function getTranslateX() {
-      const box = document.getElementsByClassName("work-box");
-      const workContainer = document.querySelector(".work-container");
-      if (box.length === 0 || !workContainer || !box[0].parentElement) return 1200;
-      const rectLeft = workContainer.getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement.getBoundingClientRect().width;
-      const padding = parseInt(window.getComputedStyle(box[0]).padding) / 2 || 0;
-      return Math.max(
-        600,
-        rect.width * box.length - (rectLeft + parentWidth) + padding
-      );
+      const boxes = el.querySelectorAll<HTMLElement>(".work-box");
+      const workContainer = el.querySelector<HTMLElement>(".work-container");
+      if (boxes.length === 0 || !workContainer) return 1600;
+      let totalWidth = 0;
+      boxes.forEach((b) => {
+        totalWidth += b.offsetWidth;
+      });
+      const containerWidth = workContainer.clientWidth || window.innerWidth * 0.85;
+      return Math.max(600, totalWidth - containerWidth + 80);
     }
 
-    ScrollTrigger.getById("work")?.kill();
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top top",
+          end: () => `+=${getTranslateX()}`,
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
+          id: "work",
+          invalidateOnRefresh: true,
+        },
+      });
 
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".work-section",
-        start: "top top",
-        end: () => `+=${getTranslateX()}`,
-        scrub: 1,
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        id: "work",
-        invalidateOnRefresh: true,
-      },
-    });
+      timeline.to(".work-flex", {
+        x: () => -getTranslateX(),
+        ease: "none",
+      });
+    }, el);
 
-    timeline.to(".work-flex", {
-      x: () => -getTranslateX(),
-      ease: "none",
-    });
-
-    const timer = setTimeout(() => {
+    const timer1 = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 300);
 
+    const timer2 = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1500);
+
     return () => {
-      clearTimeout(timer);
-      timeline.kill();
-      ScrollTrigger.getById("work")?.kill();
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      ctx.revert();
     };
   }, []);
 
   return (
-    <div className="work-section" id="work">
+    <div className="work-section" id="work" ref={sectionRef}>
       <div className="work-container section-container">
         <h2>
           My <span>Work</span>

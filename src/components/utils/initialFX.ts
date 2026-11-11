@@ -1,12 +1,19 @@
 import { TextSplitter } from "../../utils/textSplitter";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { lenis } from "../Navbar";
+
+let activeSplitters: TextSplitter[] = [];
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
   if (lenis) {
     lenis.start();
   }
+  setTimeout(() => {
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+  }, 150);
   const mainEl = document.getElementsByTagName("main")[0];
   if (mainEl) {
     mainEl.classList.add("main-active");
@@ -17,110 +24,72 @@ export function initialFX() {
     delay: 0.5,
   });
 
+  // Revert any previous splitters so navigating back or HMR never double-splits
+  activeSplitters.forEach((s) => s.revert());
+  activeSplitters = [];
+
+  const selectors = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"];
+  const elements = selectors.flatMap((selector) =>
+    Array.from(document.querySelectorAll(selector))
+  );
+  const landingText = new TextSplitter(elements, {
+    type: "chars,lines",
+    linesClass: "split-line",
+  });
+  activeSplitters.push(landingText);
+
   gsap.fromTo(
-    [".landing-intro h2", ".landing-intro h1", ".landing-info h3"],
-    { opacity: 0, y: 40, filter: "blur(5px)" },
+    landingText.chars,
+    { opacity: 0, y: 80, filter: "blur(5px)" },
     {
       opacity: 1,
-      duration: 1.0,
+      duration: 1.2,
       filter: "blur(0px)",
-      ease: "power3.out",
+      ease: "power3.inOut",
       y: 0,
-      stagger: 0.12,
+      stagger: 0.025,
+      delay: 0.2,
+    }
+  );
+
+  const TextProps = { type: "chars,lines", linesClass: "split-h2" };
+
+  const landingText2 = new TextSplitter(".landing-h2-info", TextProps);
+  activeSplitters.push(landingText2);
+
+  gsap.fromTo(
+    landingText2.chars,
+    { opacity: 0, y: 80, filter: "blur(5px)" },
+    {
+      opacity: 1,
+      duration: 1.2,
+      filter: "blur(0px)",
+      ease: "power3.inOut",
+      y: 0,
+      stagger: 0.025,
       delay: 0.2,
     }
   );
 
   gsap.fromTo(
-    [".landing-info-h2", ".landing-h2-info"],
-    { opacity: 0, y: 30, filter: "blur(4px)" },
+    ".landing-info-h2",
+    { opacity: 0, y: 30 },
     {
       opacity: 1,
-      duration: 1.0,
-      filter: "blur(0px)",
-      ease: "power3.out",
+      duration: 1.2,
+      ease: "power1.inOut",
       y: 0,
-      stagger: 0.15,
-      delay: 0.4,
+      delay: 0.5,
     }
   );
-
   gsap.fromTo(
     [".header", ".icons-section", ".nav-fade"],
     { opacity: 0 },
     {
       opacity: 1,
-      duration: 1.0,
+      duration: 1.2,
       ease: "power1.inOut",
       delay: 0.1,
     }
   );
-
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
-  var landingText2 = new TextSplitter(".landing-h2-info", TextProps);
-  var landingText3 = new TextSplitter(".landing-h2-info-1", TextProps);
-  var landingText4 = new TextSplitter(".landing-h2-1", TextProps);
-  var landingText5 = new TextSplitter(".landing-h2-2", TextProps);
-
-  if (landingText2.chars.length > 0 && landingText3.chars.length > 0) {
-    LoopText(landingText2, landingText3);
-  }
-  if (landingText4.chars.length > 0 && landingText5.chars.length > 0) {
-    LoopText(landingText4, landingText5);
-  }
-}
-
-function LoopText(Text1: TextSplitter, Text2: TextSplitter) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
-
-  tl.fromTo(
-    Text2.chars,
-    { opacity: 0, y: 80 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.1,
-      delay: delay,
-    },
-    0
-  )
-    .fromTo(
-      Text1.chars,
-      { y: 80 },
-      {
-        duration: 1.2,
-        ease: "power3.inOut",
-        y: 0,
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    )
-    .fromTo(
-      Text1.chars,
-      { y: 0 },
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay,
-      },
-      0
-    )
-    .to(
-      Text2.chars,
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    );
 }

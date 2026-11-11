@@ -7,11 +7,13 @@ export class TextSplitter {
   selector: string | Function;
   private originalHTML: Map<Element, string> = new Map();
 
-  constructor(target: string | Element | NodeListOf<Element> | Element[], vars?: { type?: string; linesClass?: string }) {
+  constructor(
+    target: string | Element | NodeListOf<Element> | Element[],
+    vars?: { type?: string; linesClass?: string }
+  ) {
     const type = vars?.type || "chars,words,lines";
     const linesClass = vars?.linesClass || "split-line";
 
-    // Get elements
     let elements: Element[] = [];
     if (typeof target === "string") {
       elements = Array.from(document.querySelectorAll(target));
@@ -27,11 +29,9 @@ export class TextSplitter {
     this.elements = elements;
 
     elements.forEach((element) => {
-      // Store original HTML for revert
       this.originalHTML.set(element, element.innerHTML);
 
       if (type.includes("chars") && type.includes("words")) {
-        // Split into words first, then chars
         this.splitWords(element);
         this.splitCharsFromWords(element);
       } else if (type.includes("chars")) {
@@ -47,22 +47,31 @@ export class TextSplitter {
   }
 
   private splitChars(element: Element) {
-    const text = element.textContent || "";
-    const chars = text.split("");
-    
-    element.innerHTML = chars
-      .map((char) => {
-        if (char === " ") {
-          return '<span class="split-char"> </span>';
-        }
-        if (char === "\n") {
-          return "<br>";
-        }
-        return `<span class="split-char">${char}</span>`;
+    // Convert <br> tags to newline markers before reading textContent
+    const clone = element.cloneNode(true) as Element;
+    clone.querySelectorAll("br").forEach((br) => {
+      br.replaceWith("\n");
+    });
+    const text = clone.textContent || "";
+    const lines = text.split("\n");
+
+    element.innerHTML = lines
+      .map((lineText) => {
+        const lineChars = lineText
+          .split("")
+          .map((char) => {
+            if (char === " ") {
+              return '<span class="split-char">&nbsp;</span>';
+            }
+            return `<span class="split-char">${char}</span>`;
+          })
+          .join("");
+        return `<span class="split-line" style="display:block">${lineChars}</span>`;
       })
       .join("");
 
     this.chars.push(...Array.from(element.querySelectorAll(".split-char")));
+    this.lines.push(...Array.from(element.querySelectorAll(".split-line")));
   }
 
   private splitWords(element: Element) {
@@ -72,7 +81,7 @@ export class TextSplitter {
     element.innerHTML = words
       .map((word) => {
         if (word.trim().length === 0) {
-          return word; // Preserve whitespace
+          return word;
         }
         return `<span class="split-word">${word}</span>`;
       })
@@ -94,7 +103,9 @@ export class TextSplitter {
   }
 
   private splitLines(element: Element, linesClass: string) {
-    // Use requestAnimationFrame to ensure layout is complete
+    // If splitChars already wrapped lines synchronously, skip duplicate wrapping
+    if (element.querySelector(".split-line")) return;
+
     requestAnimationFrame(() => {
       const items = element.querySelectorAll(".split-word, .split-char");
       if (items.length === 0) return;
@@ -110,7 +121,6 @@ export class TextSplitter {
         }
 
         if (Math.abs(rect.top - currentTop) > 5) {
-          // New line
           if (currentLine.length > 0) {
             lines.push([...currentLine]);
           }
@@ -125,7 +135,6 @@ export class TextSplitter {
         lines.push(currentLine);
       }
 
-      // Wrap lines
       lines.forEach((line) => {
         if (line.length === 0) return;
         const lineWrapper = document.createElement("span");
@@ -157,4 +166,3 @@ export class TextSplitter {
     this.originalHTML.clear();
   }
 }
-

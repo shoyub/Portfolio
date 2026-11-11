@@ -3,19 +3,15 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
+  padding: 15px 0px;
+  margin-bottom: -80px;
   box-sizing: border-box;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  z-index: 99999;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 0 0 20px 20px;
-  background: transparent;
+  z-index: 9999;
 }
-
 .header ul {
   font-size: 11px;
   display: flex;
@@ -27,7 +23,6 @@
   row-gap: 6px;
   align-items: end;
 }
-
 .header ul li {
   margin-left: 0px;
   letter-spacing: 0.8px;
@@ -35,43 +30,29 @@
   font-weight: 600;
   cursor: pointer;
 }
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.navbar-connect {
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
 }
-
 .navbar-title {
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: #ffffff;
-}
-
-.navbar-connect {
-  display: none;
   font-size: 13px;
-  letter-spacing: 0.6px;
-  font-weight: 500;
-  color: #c8bfff;
-  transition: color 0.3s ease;
-  white-space: nowrap;
+  letter-spacing: 0.2px;
 }
-
-.navbar-connect:hover {
-  color: #ffffff;
-}
-
 @media only screen and (min-width: 500px) {
   .header {
-    padding: 20px 24px;
+    padding: 20px 0px;
   }
   .header ul {
     flex-direction: row;
     align-items: center;
     font-size: 14px;
-    column-gap: 24px;
   }
   .header ul li {
     color: #eae5ec;
@@ -80,48 +61,28 @@
     font-size: 16px;
   }
 }
-
 @media only screen and (min-width: 900px) {
   .navbar-connect {
     display: block;
+    left: 38%;
   }
   .header ul {
-    column-gap: 32px;
+    column-gap: 28px;
   }
 }
-
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 26px 32px;
+    padding: 35px 0px;
   }
   .header ul {
-    column-gap: 44px;
-    font-size: 15px;
+    column-gap: 48px;
+    font-size: 16px;
   }
   .navbar-connect {
-    font-size: 15px;
+    font-size: 16px;
+    left: 42%;
   }
   .navbar-title {
     font-size: 18px;
   }
-}
-
-.header.header-scrolled {
-  background: rgba(20, 15, 32, 0.78);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(194, 164, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
-  padding: 14px 28px;
-}
-
-.navbar-resume-link {
-  color: var(--accentColor) !important;
-  font-weight: 700 !important;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.navbar-resume-link:hover {
-  color: #ffffff !important;
 }

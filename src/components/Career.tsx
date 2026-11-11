@@ -3,10 +3,14 @@ import { config } from "../config";
 
 const getDisplayYear = (period: string) => {
   if (period.includes("Present")) return "NOW";
-  if (period.includes(" - ")) {
-    return period.split(" - ")[0]; // Show start year for ranges
+  const years = period.match(/\d{4}/g);
+  if (years && years.length > 0) {
+    return years[years.length - 1]; // Show completion / ending year (e.g., 2026 for B.Tech, 2022 for 12th, 2020 for 10th)
   }
-  return period; // Single year like "2021"
+  if (period.includes(" - ")) {
+    return period.split(" - ")[1] || period.split(" - ")[0];
+  }
+  return period;
 };
 
 const Career = () => {

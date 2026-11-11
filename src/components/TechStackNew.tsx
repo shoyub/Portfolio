@@ -60,14 +60,14 @@ const techStack: TechItem[][] = [
   ],
   // Row 5 - 4 items
   [
-    { name: "LangChain", icon: "https://avatars.githubusercontent.com/u/126733545?s=200&v=4", url: "https://langchain.com" },
-    { name: "Gemini", icon: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg", url: "https://ai.google.dev" },
-    { name: "Claude", icon: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg", url: "https://anthropic.com", invertOnDark: true },
+    { name: "LangChain", icon: "/images/langchain.svg", url: "https://langchain.com" },
+    { name: "Gemini", icon: "/images/gemini.svg", url: "https://ai.google.dev" },
+    { name: "Claude", icon: "/images/claude.svg", url: "https://anthropic.com" },
     { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", url: "https://figma.com" },
   ],
   // Row 6 - 2 items (tip of pyramid)
   [
-    { name: "OpenAPI / SDD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openapi/openapi-original.svg", url: "https://openapis.org" },
+    { name: "OpenAPI / SDD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg", url: "https://openapis.org" },
     { name: "Microservices", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg", url: "https://microservices.io" },
   ],
 ];

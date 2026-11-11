@@ -21,7 +21,6 @@
     padding-bottom: 40px;
   }
 
-  /* Fix spacing between name and subtitle */
   .landing-intro {
     position: relative !important;
     top: auto !important;
@@ -51,7 +50,6 @@
     margin-bottom: 5px;
   }
 
-  /* Subtitles Container */
   .landing-info {
     position: relative !important;
     top: auto !important;
@@ -109,12 +107,16 @@
     display: none;
   }
 
-  /* Show mobile photo */
+  .landing-h2-2,
+  .landing-h2-info-1 {
+    display: none !important;
+  }
+
   .mobile-photo {
     display: block;
     position: relative !important;
     width: 100%;
-    max-width: 340px;
+    max-width: 380px;
     margin: 0 auto;
     z-index: 1;
     order: 2;
@@ -167,15 +169,15 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 110px;
+  height: 130px;
   background-image: linear-gradient(
     0deg,
     transparent,
-    var(--backgroundColor) 75%
+    var(--backgroundColor) 70%
   );
   pointer-events: none;
   z-index: 12;
-  opacity: 1;
+  opacity: 0;
   left: 0;
 }
 
@@ -241,7 +243,6 @@
   left: 50%;
   transform: translate(-50%, 100%) scale(1.4);
   opacity: 0;
-  pointer-events: none;
 }
 
 .character-model {
@@ -252,9 +253,9 @@
   transform: translateX(-50%);
   width: 100%;
   left: 50%;
-  z-index: 8;
+  z-index: 11;
   bottom: 0;
-  pointer-events: none;
+  pointer-events: inherit;
 }
 
 .character-model::after,
@@ -283,22 +284,21 @@
   z-index: 3;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  pointer-events: auto;
 }
 
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 44%;
-  left: 85px;
-  transform: translateY(-50%);
+  top: 40%;
+  left: auto;
+  right: 66%;
+  transform: translate(0%, -50%);
 }
 
 .landing-intro h2 {
   margin: 0;
-  margin-bottom: 6px;
   color: var(--accentColor);
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 300;
   letter-spacing: 2px;
 }
@@ -306,43 +306,44 @@
 .landing-intro h1 {
   margin: 0;
   letter-spacing: 2px;
-  font-size: clamp(32px, 3.2vw, 54px);
-  line-height: 1.08;
+  font-size: 40px;
+  line-height: 38px;
   font-weight: 500;
   font-family: "Geist", sans-serif;
 }
 
 .landing-info {
   position: absolute;
-  top: 48%;
-  right: 45px;
-  transform: translateY(-50%);
+  bottom: auto;
+  top: 51%;
   z-index: 9;
   text-align: left;
+  transform: translate(0%, -50%);
+  right: auto;
+  left: 66%;
 }
 
 .landing-info h3 {
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: 2px;
   font-weight: 300;
   color: var(--accentColor);
   margin: 0;
-  margin-bottom: 4px;
 }
 
 .landing-info h2 {
   margin: 0;
-  margin-top: -12px;
-  margin-left: 8px;
+  margin-top: -20px;
+  margin-left: 20px;
   font-family: "Geist", sans-serif;
   font-weight: 600;
-  font-size: clamp(22px, 2.3vw, 42px);
-  line-height: 1.2;
+  font-size: 36px;
+  line-height: 42px;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   white-space: nowrap;
 }
 
@@ -358,12 +359,13 @@
 
 h2.landing-info-h2 {
   color: #c481ff;
-  font-size: clamp(28px, 3vw, 52px);
+  font-size: 48px;
+  width: 150%;
   margin: 0;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   position: relative;
-  margin-left: 0;
+  margin-left: -5px;
 }
 
 .landing-h2-2 {
@@ -395,42 +397,43 @@ h2.landing-info-h2 {
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
-    left: 100px;
+    top: 40%;
+    left: auto;
+    right: 70%;
+    transform: translate(0%, -50%);
   }
 
   .landing-info {
-    right: 60px;
+    bottom: auto;
+    top: 51%;
+    z-index: 9;
+    text-align: left;
+    transform: translate(0%, -50%);
+    right: auto;
+    left: 70%;
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .landing-intro {
-    left: 120px;
-  }
-
   .landing-intro h2 {
-    font-size: 26px;
+    font-size: 35px;
   }
 
   .landing-intro h1 {
-    font-size: 56px;
-    line-height: 54px;
-  }
-
-  .landing-info {
-    right: 80px;
+    font-size: 60px;
+    line-height: 55px;
   }
 
   .landing-info h3 {
-    font-size: 26px;
+    font-size: 35px;
   }
 
   .landing-info h2 {
-    font-size: 46px;
-    line-height: 48px;
+    font-size: 52px;
+    line-height: 54px;
   }
 
   h2.landing-info-h2 {
-    font-size: 58px;
+    font-size: 68px;
   }
 }

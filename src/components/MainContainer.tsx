@@ -18,15 +18,15 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 768
   );
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
 
   useEffect(() => {
-    setAllTimeline();
+    if (window.innerWidth <= 768) {
+      setAllTimeline();
+    }
     const resizeHandler = () => {
       setSplitText();
-      const desktop = window.innerWidth > 768;
-      setIsDesktopView(desktop);
-      setIsMobile(!desktop);
+      setIsDesktopView(window.innerWidth > 768);
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
@@ -41,15 +41,17 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Navbar />
       <SocialIcons />
       {isDesktopView && !isMobile && children}
-      <Landing />
-      <About />
-      <WhatIDo />
-      <Career />
-      <Work />
-      <TechStackNew />
-      <Certifications />
-      <CallToAction />
-      <Contact />
+      <div className="container-main">
+        <Landing />
+        <About />
+        <WhatIDo />
+        <Career />
+        <Work />
+        <TechStackNew />
+        <Certifications />
+        <CallToAction />
+        <Contact />
+      </div>
     </div>
   );
 };

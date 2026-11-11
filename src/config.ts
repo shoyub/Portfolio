@@ -79,12 +79,11 @@ export const config = {
       period: "Sep 2022 - May 2026",
       location: "Vellore, Tamil Nadu",
       description:
-        "CGPA: 8.58/10. Senior Core Committee Member at Soft Computing Research Society (SCRS). Organized 5+ technical workshops on web and software development mentoring 100+ students. Represented Andhra Pradesh in 63rd and 64th National SGFI Cricket.",
+        "CGPA: 8.58/10. Senior Core Committee Member at Soft Computing Research Society (SCRS), VIT Chapter. Organized 5+ technical workshops on web and software development, mentoring 100+ students.",
       responsibilities: [
         "Graduated with 8.58/10 CGPA across Data Structures, Algorithms, DBMS, OS, Networks, and Microservices.",
         "Served as Senior Core Committee Member of the Soft Computing Research Society (SCRS), VIT Chapter.",
-        "Organized 5+ technical workshops mentoring 100+ students in modern web and software engineering.",
-        "Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket)."
+        "Organized 5+ technical workshops mentoring 100+ students in modern web and software engineering."
       ],
       technologies: ["Data Structures & Algorithms", "OOP", "Microservices", "DBMS", "Operating Systems", "Computer Networks"]
     },
@@ -96,7 +95,7 @@ export const config = {
       description:
         "Graduated with 91.3% in Mathematics, Physics, and Chemistry (MPC). Developed advanced analytical problem-solving and mathematical reasoning capabilities.",
       responsibilities: [
-        "Secured 91.3% in State Board Examinations.",
+        "Secured 91.3% in State Board Examinations (2022).",
         "Comprehensive coursework in higher mathematics, mechanics, and analytical physics."
       ],
       technologies: ["Mathematics", "Physics", "Analytical Problem Solving"]
@@ -107,12 +106,12 @@ export const config = {
       period: "Aug 2019 - May 2020",
       location: "Piler, Andhra Pradesh",
       description:
-        "Graduated with 96.8% with Distinction. Selected and represented Andhra Pradesh State Cricket Team at the National Level.",
+        "Graduated with 96.8% with Distinction. Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket), demonstrating teamwork and leadership.",
       responsibilities: [
-        "Secured 96.8% with Distinction in SSC Board examinations.",
-        "State team representative in National School Games (SGFI Cricket)."
+        "Secured 96.8% with Distinction in SSC Board examinations (2020).",
+        "Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket)."
       ],
-      technologies: ["Academic Distinction", "State-Level Cricket"]
+      technologies: ["Academic Distinction", "National SGFI Cricket (63rd & 64th)"]
     }
   ],
   certifications: [
@@ -120,14 +119,14 @@ export const config = {
       title: "Certified Partner Specialist – Gemini Enterprise Agent Development",
       issuer: "Google",
       date: "July 2026",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg",
+      image: "/images/gemini.svg",
       link: "https://www.linkedin.com/in/shoyub-khan"
     },
     {
       title: "Claude Certified Developer – Foundations",
       issuer: "Anthropic",
       date: "September 2026",
-      image: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg",
+      image: "/images/claude.svg",
       link: "https://www.linkedin.com/in/shoyub-khan"
     },
     {

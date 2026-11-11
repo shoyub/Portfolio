@@ -6,14 +6,14 @@ const CallToAction = () => {
   return (
     <div className="cta-section">
       <div className="cta-buttons">
-        <Link to="/myworks" className="cta-btn cta-btn-play" data-cursor="disable">
-          Explore All Projects →
+        <Link to="/play" className="cta-btn cta-btn-play" data-cursor="disable">
+          Play with me →
         </Link>
-        
-        <a 
-          href={config.contact.linkedin} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+
+        <a
+          href={config.contact.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           className="cta-btn cta-btn-hire"
           data-cursor="disable"
         >

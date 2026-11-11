@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -10,34 +10,23 @@ gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    // Initialize Lenis smooth scroll
     lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.7,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.5,
+      wheelMultiplier: 1.7,
       touchMultiplier: 2,
       infinite: false,
     });
 
-    lenis.on("scroll", ({ scroll }: { scroll: number }) => {
-      setIsScrolled(scroll > 30);
+    lenis.on("scroll", () => {
       ScrollTrigger.update();
     });
 
-    document.body.style.overflowY = "auto";
-    lenis.start();
+    lenis.stop();
 
     let rafId: number;
     function raf(time: number) {
@@ -46,30 +35,25 @@ const Navbar = () => {
     }
     rafId = requestAnimationFrame(raf);
 
-    // Handle navigation links only for anchor hash sections
     let links = document.querySelectorAll(".header ul a[data-href]");
-    const clickHandlers: Array<{ el: HTMLAnchorElement; fn: (e: Event) => void }> = [];
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
-      const fn = (e: Event) => {
-        let section = element.getAttribute("data-href");
-        if (section) {
+      element.addEventListener("click", (e) => {
+        if (window.innerWidth > 768) {
           e.preventDefault();
-          const target = document.querySelector(section) as HTMLElement;
-          if (target) {
-            if (lenis && window.innerWidth > 768) {
+          let elem = e.currentTarget as HTMLAnchorElement;
+          let section = elem.getAttribute("data-href");
+          if (section && lenis) {
+            const target = document.querySelector(section) as HTMLElement;
+            if (target) {
               lenis.scrollTo(target, {
-                offset: -40,
-                duration: 1.4,
+                offset: 0,
+                duration: 1.5,
               });
-            } else {
-              target.scrollIntoView({ behavior: "smooth" });
             }
           }
         }
-      };
-      element.addEventListener("click", fn);
-      clickHandlers.push({ el: element, fn });
+      });
     });
 
     const onResize = () => {
@@ -79,28 +63,24 @@ const Navbar = () => {
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", onResize);
-      clickHandlers.forEach(({ el, fn }) => el.removeEventListener("click", fn));
       lenis?.destroy();
     };
   }, []);
 
   return (
     <>
-      <div className={`header ${isScrolled ? "header-scrolled" : ""}`}>
-        <div className="navbar-left">
-          <a href="/#" className="navbar-title" data-cursor="disable">
-            SK
-          </a>
-          <a
-            href={`mailto:${config.contact.email}`}
-            className="navbar-connect"
-            data-cursor="disable"
-          >
-            {config.contact.email}
-          </a>
-        </div>
+      <div className="header">
+        <a href="/#" className="navbar-title" data-cursor="disable">
+          SK
+        </a>
+        <a
+          href={`mailto:${config.contact.email}`}
+          className="navbar-connect"
+          data-cursor="disable"
+        >
+          {config.contact.email}
+        </a>
         <ul>
           <li>
             <a data-href="#about" href="#about">
@@ -122,7 +102,6 @@ const Navbar = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="navbar-resume-link"
               data-cursor="disable"
             >
               <HoverLinks text="RESUME" />
