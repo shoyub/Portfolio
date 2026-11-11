@@ -13,10 +13,8 @@ export const sendEmail = async (formData: {
       template_id: "template_ip2y6ws",
       user_id: "85RNvHU3sWIm7hCfC",
       template_params: {
-        from_name: formData.name,
-        to_name: "Shoyub Khan",
-        from_email: formData.email,
-        to_email: "shoyub.khan01@gmail.com",
+        name: formData.name,
+        email: formData.email,
         message: formData.message,
       },
     }),
