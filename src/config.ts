@@ -60,33 +60,18 @@ export const config = {
       technologies: ["GCP", "Gemini", "FastAPI", "Python", "Docker", "Microservices", "REST APIs", "Agentic AI"]
     },
     {
-      position: "Software Development Intern",
+      position: "Frontend Developer",
       company: "iCAVE Infotech",
       period: "May 2025 - Jun 2025",
       location: "Bengaluru, Karnataka, India",
       description:
-        "Architected and built 5+ high-performance responsive frontend components for company web applications using React.js, reducing initial page load time by 30%. Implemented modern responsive patterns and collaborated in a 3-member engineering sprint team.",
+        "Architected and built 5+ high-performance responsive frontend components for company web applications using React.js, reducing initial page load time by 30%. Implemented modern responsive design patterns, modular styling, and accessibility standards.",
       responsibilities: [
         "Architected and built 5+ high-performance responsive frontend components with React.js, reducing initial page load time by 30%.",
         "Enhanced user experience through the implementation of responsive design patterns, modular styling, and modern accessibility standards.",
         "Collaborated with a 3-member engineering team utilizing Git version control, branch workflows, and Agile sprint development."
       ],
       technologies: ["React.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Git", "Agile", "REST APIs"]
-    },
-    {
-      position: "Software Development Engineer Intern",
-      company: "Distributed Systems & Cloud Architecture",
-      period: "2024 - 2025",
-      location: "Bengaluru, India",
-      description:
-        "Engineered production-grade applications including RetailCo Warehouse Management (FastAPI, React 18, SQLAlchemy), Real-Time Chat (Socket.IO, Redis Pub/Sub, RabbitMQ, Docker), and Spring Boot Microservices with Eureka and OpenFeign.",
-      responsibilities: [
-        "Developed full-stack warehouse and fulfilment management system with Spec-Driven Development and OpenAPI standards.",
-        "Built real-time messaging synchronizing instances across Redis Pub/Sub and asynchronous RabbitMQ offline queues.",
-        "Implemented microservices architecture with Spring Cloud, Eureka discovery, and OpenFeign inter-service communication.",
-        "Enforced rigorous code quality with Pytest, automated test coverage, and GitLab CI pipelines."
-      ],
-      technologies: ["Java", "Spring Boot", "FastAPI", "Python", "React", "PostgreSQL", "Redis", "RabbitMQ", "Docker"]
     },
     {
       position: "B.Tech in Computer Science & Engineering",

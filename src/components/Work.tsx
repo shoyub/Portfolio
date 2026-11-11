@@ -50,10 +50,14 @@ const Work = () => {
     });
 
     // Refresh ScrollTrigger after layout settles
-    ScrollTrigger.refresh();
+    const timer = setTimeout(() => {
+      setTranslateX();
+      ScrollTrigger.refresh();
+    }, 400);
 
     // Clean up
     return () => {
+      clearTimeout(timer);
       timeline.kill();
       ScrollTrigger.getById("work")?.kill();
     };

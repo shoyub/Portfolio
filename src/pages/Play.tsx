@@ -43,7 +43,7 @@ Profile:
 - Name: Shoyub Khan; based in Bengaluru, Karnataka, India.
 - Role: Software Development Engineer Intern (SDE Intern) & Full-Stack Developer.
 - Education: B.Tech in Computer Science and Engineering from Vellore Institute of Technology (VIT Vellore), 2022-2026, CGPA 8.58/10. Intermediate at Narayan Junior College (91.3%), SSC at Narayana High School (96.8%).
-- Work Experience: Software Development Engineer Intern at Quantiphi (Jan 2026 - Present; working on Gemini Enterprise Agents, GCP cloud architecture, FastAPI microservices) and Software Development Intern at iCAVE Infotech (May 2025 - June 2025; React.js, 30% page load reduction, Agile).
+- Work Experience: Software Development Engineer Intern at Quantiphi (Jan 2026 - Present; working on Gemini Enterprise Agents, GCP cloud architecture, FastAPI microservices) and Frontend Developer at iCAVE Infotech (May 2025 - June 2025; React.js, 30% page load reduction, Agile).
 - Leadership & Sports: Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket). Senior Core Committee Member of the Soft Computing Research Society (SCRS, VIT Chapter). Mentored 100+ students across 5+ tech workshops.
 - Certifications: Certified Partner Specialist – Gemini Enterprise Agent Development (Google), Claude Certified Developer – Foundations (Anthropic), Oracle Cloud Application Foundation Implementation Specialist (Oracle), Microsoft Certified: Azure AI Fundamentals (Microsoft), Postman API Fundamentals Student Expert.
 - Core tools: Java, Python, Spring Boot, FastAPI, React.js, Vite, TypeScript, JavaScript, PostgreSQL, MySQL, MongoDB, Redis, Docker, RabbitMQ, Socket.IO, GitLab CI, Pytest.

@@ -71,8 +71,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <About />
         <WhatIDo />
         <Career />
-        <Work />
         <Certifications />
+        <Work />
         <TechStackNew />
         <CallToAction />
         <Contact />

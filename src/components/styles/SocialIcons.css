@@ -6,16 +6,18 @@
   z-index: 99;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .social-icons {
   position: absolute;
-  left: -20px;
-  bottom: 20px;
+  left: 0;
+  bottom: 25px;
   display: none;
   flex-direction: column;
   gap: 8px;
   z-index: 999;
   padding: 10px;
+  pointer-events: auto;
 }
 .social-icons:hover {
   transition: 0.3s;
@@ -58,6 +60,7 @@
   font-weight: 600;
   color: #5e5e5e;
   cursor: pointer;
+  pointer-events: auto;
   transition: 0.5s;
   transform-origin: left bottom;
   transform: translateX(100%) rotateZ(-90deg);
