@@ -41,7 +41,7 @@ const Education = () => {
       title: "10th Standard (SSC)",
       institution: "Narayana High School, Piler",
       period: "Aug 2019 - May 2020",
-      details: "Percentage: 97.3%",
+      details: "Percentage: 96.8%",
       icon: GraduationCap,
     },
   ];
