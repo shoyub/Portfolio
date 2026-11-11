@@ -35,6 +35,18 @@ const Projects = () => {
       technologies: ["React", "Node.js", "Socket.io", "MongoDB", "WebSocket"],
     },
     {
+      title: "IMDB Top 250 Movies Chatbot",
+      description: [
+        "Built a full-featured IMDB clone with movie database integration",
+        "Implemented search, filtering, and user ratings functionality",
+        "Responsive design with dark/light theme support",
+      ],
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg",
+      githubUrl: "https://github.com/shoyub/imdb-clone",
+      technologies: ["React", "TypeScript", "TMDB API", "Tailwind CSS"],
+    },
+    {
       title: "ResumeGO: Resume Builder Web App",
       description: [
         "Developed an interactive resume builder with customizable templates",
@@ -43,20 +55,7 @@ const Projects = () => {
       ],
       image: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png",
       githubUrl: "https://github.com/shoyub/ResumeGO",
-      technologies: ["JavaScript", "HTML", "Tailwind CSS", "Vite"],
-    },
-
-    {
-      title: "Yumigo:Online Food Ordering App",
-      description: [
-        "Developed a real-time food delivery application",
-        "Implemented user authentication, order tracking, and payment integration",
-        "Real-time order status updates and delivery tracking",
-      ],
-      image:
-        "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/2147704672/images/1adf4-eba4-a33c-774a-0c8b431df6f4_Food-Ordering-App-iOS-System-Design.png",
-      githubUrl: "https://github.com/shoyub/food-delivery",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
+      technologies: ["JavaScript", "HTML", "Tailwind CSS", "React"],
     },
     {
       title: "To-do List",
