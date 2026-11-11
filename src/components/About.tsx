@@ -81,7 +81,7 @@ const About = () => {
             <div className="flex flex-wrap gap-4">
               <Button className="btn-primary">
                 <a
-                  href="/Java_resume.pdf"
+                  href="/java_resume.pdf"
                   download
                   className="flex items-center gap-2"
                 >
@@ -91,7 +91,7 @@ const About = () => {
 
               <Button className="btn-primary">
                 <a
-                  href="/Python_Resume.pdf"
+                  href="/python_resume.pdf"
                   download
                   className="flex items-center gap-2"
                 >
