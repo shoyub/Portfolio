@@ -43,7 +43,7 @@ Profile:
 - Education: B.Tech in Computer Science and Engineering from Vellore Institute of Technology (VIT Vellore), 2022-2026, CGPA 8.58/10. Intermediate at Narayan Junior College (91.3%), SSC at Narayana High School (96.8%).
 - Work Experience: Software Development Engineer Intern at Quantiphi (Jan 2026 - Present; Gemini Enterprise Agents, GCP cloud architecture, FastAPI microservices) and Frontend Developer at iCAVE Infotech (May 2025 - June 2025; React.js, 30% page load reduction, Agile).
 - Leadership & Sports: Represented Andhra Pradesh State Team in the 63rd and 64th National School Games (U-14 SGFI Cricket). Senior Core Committee Member of the Soft Computing Research Society (SCRS, VIT Chapter). Mentored 100+ students across 5+ tech workshops.
-- Certifications: Certified Partner Specialist – Gemini Enterprise Agent Development (Google), Claude Certified Developer – Foundations (Anthropic), Oracle Cloud Application Foundation Implementation Specialist (Oracle), Microsoft Certified: Azure AI Fundamentals (Microsoft), Postman API Fundamentals Student Expert.
+- Certifications: Professional Cloud Architect (Google Cloud), Associate Cloud Engineer (Google), Claude Certified Developer – Foundations (Anthropic), Certified Partner Specialist – Gemini Enterprise Agent Development (Google), Oracle Cloud Application Foundation Implementation Specialist (Oracle), Microsoft Certified: Azure AI Fundamentals (Microsoft), Postman API Fundamentals Student Expert.
 - Core tools: Java, Python, Spring Boot, FastAPI, React.js, Vite, TypeScript, JavaScript, PostgreSQL, MySQL, MongoDB, Redis, Docker, RabbitMQ, Socket.IO, GitLab CI, Pytest.
 - Public GitHub: github.com/shoyub.
 
@@ -255,8 +255,8 @@ function getLocalAssistantReply(query: string, history: ChatMessage[]): string {
   }
 
   // 7. Certifications
-  if (/\b(certifications?|certified|certificates?|credentials?|oracle|azure|anthropic|claude|gemini\s*cert|postman\s*cert)\b/.test(q)) {
-    return "I hold 5 industry certifications:\n• Google Certified Partner Specialist – Gemini Enterprise Agent Development\n• Anthropic Claude Certified Developer – Foundations\n• Oracle Cloud Application Foundation Certified Implementation Specialist\n• Microsoft Certified: Azure AI Fundamentals\n• Postman API Fundamentals Student Expert.";
+  if (/\b(certifications?|certified|certificates?|credentials?|oracle|azure|anthropic|claude|gemini\s*cert|postman\s*cert|cloud\s*architect|associate\s*cloud)\b/.test(q)) {
+    return "I hold 7 industry certifications:\n• Google Cloud Certified Professional Cloud Architect (Nov 2026)\n• Google Certified Associate Cloud Engineer (Sep 2026)\n• Anthropic Claude Certified Developer – Foundations (Sep 2026)\n• Google Certified Partner Specialist – Gemini Enterprise Agent Development (July 2026)\n• Oracle Cloud Application Foundation Certified Implementation Specialist (Aug 2025)\n• Microsoft Certified: Azure AI Fundamentals (Aug 2024)\n• Postman API Fundamentals Student Expert.";
   }
 
   // 8. Sports / Cricket / Extracurriculars / Leadership / Clubs / Hobbies

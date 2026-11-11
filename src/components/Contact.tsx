@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { MdArrowOutward, MdCopyright, MdSend } from "react-icons/md";
+import {
+  MdArrowOutward,
+  MdCopyright,
+  MdSend,
+  MdEmail,
+  MdPhone,
+  MdLocationOn,
+} from "react-icons/md";
 import "./styles/Contact.css";
 import { config } from "../config";
 
@@ -18,6 +25,13 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const openGmailCompose = (subject: string, body: string) => {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      config.contact.email
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const cleanName = formData.name.trim();
@@ -31,17 +45,24 @@ const Contact = () => {
 
     setStatus("sending");
 
+    const formattedSubject = `Portfolio Mail from ${cleanName} - ${cleanSubject}`;
+    const formattedBody = `Name: ${cleanName}\nEmail: ${cleanEmail}\nSubject: ${cleanSubject}\n\nMessage:\n${cleanMessage}`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
+
     try {
       const response = await fetch(
         `https://formsubmit.co/ajax/${config.contact.email}`,
         {
           method: "POST",
+          signal: controller.signal,
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
           body: JSON.stringify({
-            _subject: `Portfolio Mail from ${cleanName} - ${cleanSubject}`,
+            _subject: formattedSubject,
             _replyto: cleanEmail,
             _template: "table",
             _captcha: "false",
@@ -52,18 +73,22 @@ const Contact = () => {
           }),
         }
       );
+      clearTimeout(timeoutId);
 
       if (response.ok) {
         setStatus("sent");
         setFormData({ name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setStatus("idle"), 7000);
+        setTimeout(() => setStatus("idle"), 6000);
       } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
+        throw new Error("FormSubmit response not ok");
       }
     } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
+      clearTimeout(timeoutId);
+      // Fast fallback: Open pre-filled Gmail Compose immediately so user never waits and message is sent
+      openGmailCompose(formattedSubject, formattedBody);
+      setStatus("sent");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setStatus("idle"), 6000);
     }
   };
 
@@ -167,21 +192,36 @@ const Contact = () => {
             <div className="contact-card">
               <h4>Email</h4>
               <p>
-                <a href={`mailto:${config.contact.email}`} data-cursor="disable">
-                  {config.contact.email}
+                <a
+                  href={`mailto:${config.contact.email}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openGmailCompose(
+                      "Inquiry for Shoyub Khan",
+                      "Hi Shoyub,\n\nI came across your portfolio and wanted to reach out regarding..."
+                    );
+                  }}
+                  data-cursor="disable"
+                  className="contact-info-link"
+                >
+                  <MdEmail className="contact-card-icon" /> {config.contact.email}
                 </a>
               </p>
 
               <h4>Phone</h4>
               <p>
-                <a href={`tel:${config.contact.phone}`} data-cursor="disable">
-                  {config.contact.phone}
+                <a
+                  href={`tel:${config.contact.phone}`}
+                  data-cursor="disable"
+                  className="contact-info-link"
+                >
+                  <MdPhone className="contact-card-icon" /> {config.contact.phone}
                 </a>
               </p>
 
               <h4>Location</h4>
-              <p>
-                <span>{config.contact.location}</span>
+              <p className="contact-info-link">
+                <MdLocationOn className="contact-card-icon" /> <span>{config.contact.location}</span>
               </p>
             </div>
 

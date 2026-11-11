@@ -73,7 +73,20 @@ const SocialIcons = () => {
           </a>
         </span>
         <span>
-          <a href={`mailto:${config.contact.email}`} title="Email">
+          <a
+            href={`mailto:${config.contact.email}`}
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(
+                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                  config.contact.email
+                )}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
+            }}
+            title="Email"
+          >
             <FaEnvelope />
           </a>
         </span>

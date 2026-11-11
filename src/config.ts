@@ -116,17 +116,31 @@ export const config = {
   ],
   certifications: [
     {
-      title: "Certified Partner Specialist – Gemini Enterprise Agent Development",
+      title: "Professional Cloud Architect Certification",
+      issuer: "Google Cloud",
+      date: "Nov 2026",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+      link: "https://www.credly.com/badges/657ec02b-1c4c-4bc5-9f1a-c6f6b988428e/public_url"
+    },
+    {
+      title: "Associate Cloud Engineer Certification",
       issuer: "Google",
-      date: "July 2026",
-      image: "/images/gemini.svg",
-      link: "https://www.linkedin.com/in/shoyub-khan"
+      date: "Sep 2026",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+      link: "https://www.credly.com/badges/7c106a6b-33dc-4eb0-868e-85573172e054/public_url"
     },
     {
       title: "Claude Certified Developer – Foundations",
       issuer: "Anthropic",
-      date: "September 2026",
+      date: "Sep 2026",
       image: "/images/claude.svg",
+      link: "https://www.credly.com/badges/d490c6ff-8125-45c7-b728-a7e319f8c5ac"
+    },
+    {
+      title: "Certified Partner Specialist – Gemini Enterprise Agent Development",
+      issuer: "Google",
+      date: "July 2026",
+      image: "/images/gemini.svg",
       link: "https://www.linkedin.com/in/shoyub-khan"
     },
     {
@@ -141,7 +155,7 @@ export const config = {
       issuer: "Microsoft",
       date: "August 2024",
       image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
-      link: "https://drive.google.com/file/d/1dHXZJcQt8qB1Rfo66_UTjWWDZ2qwVEoK/view?usp=drivesdk"
+      link: "https://drive.google.com/file/d/1dHXZJcQt8qB1Rfo66_UTjWWDZ2qwVEoK/view"
     },
     {
       title: "Postman API Fundamentals Student Expert",

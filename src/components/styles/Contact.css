@@ -226,6 +226,21 @@
   color: #aa42ff;
 }
 
+.contact-info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-card-icon {
+  font-size: 16px;
+  color: #c481ff;
+  flex-shrink: 0;
+}
+
 a.contact-social {
   display: inline-flex;
   align-items: center;
