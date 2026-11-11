@@ -23,6 +23,56 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Phishing Detection System",
+      description: [
+        "Built a phishing detection system using a hybrid approach combining machine learning models and rule-based scoring for improved accuracy.",
+        "Developed a complete data pipeline on 11,000+ samples including data ingestion, validation, and preprocessing using Pandas.",
+        "Designed a FastAPI backend with REST APIs for real-time URL analysis, batch prediction, and model retraining with MongoDB integration.",
+      ],
+      image:
+        "https://www.opensourceforu.com/wp-content/uploads/2022/03/phishing-attack.jpg",
+      githubUrl: "https://github.com/shoyub/Network-Security",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "Machine Learning",
+        "MongoDB",
+        "Pandas",
+        "Scikit-learn",
+      ],
+    },
+    {
+      title: "Next Word Prediction System",
+      description: [
+        "Developed an NLP-based next word prediction system using LSTM and GRU models to capture sequential text patterns.",
+        "Implemented end-to-end text processing including tokenization, sequence generation, padding, and embedding on Shakespeare dataset.",
+        "Deployed a Streamlit app enabling real-time predictions and comparison between LSTM and GRU model outputs.",
+      ],
+      image:
+        "https://cdn.slidesharecdn.com/ss_thumbnails/nextwordprediction-210226103753-thumbnail.jpg?width=640&height=640&fit=bounds",
+      githubUrl: "https://github.com/shoyub/next-word-",
+      technologies: ["Python", "TensorFlow", "LSTM", "GRU", "NLP", "Streamlit"],
+    },
+    {
+      title: "AI Search Chatbot with LangChain",
+      description: [
+        "Developed an AI chatbot leveraging Llama3 via Groq and LangChain agents for real-time query handling.",
+        "Implemented Retrieval-Augmented Generation (RAG) using Wikipedia, Arxiv, and DuckDuckGo tools for dynamic information retrieval.",
+        "Built an interactive Streamlit UI with chat history and agent reasoning visualization using callback handlers.",
+      ],
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjXy1LWvD4TPw32REkVpG5UhZqtdP0VIaxZA&s",
+      githubUrl: "https://github.com/shoyub/search-engine",
+      technologies: [
+        "Python",
+        "LangChain",
+        "Groq",
+        "Llama 3",
+        "RAG",
+        "Streamlit",
+      ],
+    },
+    {
       title: "Quiz Microservices Platform",
       description: [
         "Developed a backend-focused quiz application using a microservice-style architecture with separate services for API Gateway, Quiz Service, Question Service, and Service Registry using Spring Boot.",
