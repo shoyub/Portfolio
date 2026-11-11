@@ -1,47 +1,63 @@
-import { Github, Linkedin, Mail, Phone, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { Github, Linkedin, Mail, Phone, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 const Footer = () => {
   const [showContact, setShowContact] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   return (
-    <footer style={{ backgroundColor: 'hsl(var(--button-dark))', color: 'hsl(var(--button-dark-foreground))' }} className="py-12">
+    <footer
+      style={{
+        backgroundColor: "hsl(var(--button-dark))",
+        color: "hsl(var(--button-dark-foreground))",
+      }}
+      className="py-12"
+    >
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Side - Name and Title */}
           <div className="text-center md:text-left mb-6 md:mb-0">
             <h3 className="text-2xl font-bold mb-2">Shoyub Khan</h3>
-            <p className="text-gray-300">Computer Science Student & Full Stack Developer</p>
+            <p className="text-gray-300">
+              Computer Science Student & Full Stack Developer
+            </p>
           </div>
 
           {/* Right Side - Social Links */}
           <div className="flex items-center gap-6">
             {/* GitHub */}
-            <a 
-              href="https://github.com/shoyub" 
-              target="_blank" 
+            <a
+              href="https://github.com/shoyub"
+              target="_blank"
               rel="noopener noreferrer"
               className="relative group"
-              onMouseEnter={() => setHoveredIcon('github')}
+              onMouseEnter={() => setHoveredIcon("github")}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <Github className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${hoveredIcon === 'github' ? 'scale-110' : ''}`} />
-              {hoveredIcon === 'github' && (
+              <Github
+                className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${
+                  hoveredIcon === "github" ? "scale-110" : ""
+                }`}
+              />
+              {hoveredIcon === "github" && (
                 <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-yellow-400 animate-spin" />
               )}
             </a>
 
             {/* LinkedIn */}
-            <a 
-              href="http://www.linkedin.com/in/shoyub-khan" 
-              target="_blank" 
+            <a
+              href="http://www.linkedin.com/in/shoyub-khan"
+              target="_blank"
               rel="noopener noreferrer"
               className="relative group"
-              onMouseEnter={() => setHoveredIcon('linkedin')}
+              onMouseEnter={() => setHoveredIcon("linkedin")}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <Linkedin className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${hoveredIcon === 'linkedin' ? 'scale-110' : ''}`} />
-              {hoveredIcon === 'linkedin' && (
+              <Linkedin
+                className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${
+                  hoveredIcon === "linkedin" ? "scale-110" : ""
+                }`}
+              />
+              {hoveredIcon === "linkedin" && (
                 <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-blue-400 animate-spin" />
               )}
             </a>
@@ -50,14 +66,18 @@ const Footer = () => {
             <button
               onClick={() => {
                 setShowContact(!showContact);
-                navigator.clipboard.writeText('shoyubvk2004@gmail.com');
+                navigator.clipboard.writeText("shoyubvk2004@gmail.com");
               }}
               className="relative group"
-              onMouseEnter={() => setHoveredIcon('email')}
+              onMouseEnter={() => setHoveredIcon("email")}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <Mail className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${hoveredIcon === 'email' ? 'scale-110' : ''}`} />
-              {hoveredIcon === 'email' && (
+              <Mail
+                className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${
+                  hoveredIcon === "email" ? "scale-110" : ""
+                }`}
+              />
+              {hoveredIcon === "email" && (
                 <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-green-400 animate-spin" />
               )}
               {showContact && (
@@ -71,14 +91,18 @@ const Footer = () => {
             <button
               onClick={() => {
                 setShowContact(!showContact);
-                navigator.clipboard.writeText('+91 9951988639');
+                navigator.clipboard.writeText("+91 9951988639");
               }}
               className="relative group"
-              onMouseEnter={() => setHoveredIcon('phone')}
+              onMouseEnter={() => setHoveredIcon("phone")}
               onMouseLeave={() => setHoveredIcon(null)}
             >
-              <Phone className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${hoveredIcon === 'phone' ? 'scale-110' : ''}`} />
-              {hoveredIcon === 'phone' && (
+              <Phone
+                className={`w-6 h-6 text-gray-300 hover:text-white transition-all duration-300 ${
+                  hoveredIcon === "phone" ? "scale-110" : ""
+                }`}
+              />
+              {hoveredIcon === "phone" && (
                 <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-purple-400 animate-spin" />
               )}
               {showContact && (
