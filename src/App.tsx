@@ -19,7 +19,8 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loader />; // 👈 show loader before app mounts
+  // Don't show loading for resume page
+  if (loading && window.location.pathname !== "/resume") return <Loader />; // 👈 show loader before app mounts
 
   return (
     <QueryClientProvider client={queryClient}>
